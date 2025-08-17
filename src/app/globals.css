@@ -1,5 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@font-face {
+  font-family: 'NyghtSerif';
+  src: url('/fonts/NyghtSerif-LightItalic.woff2') format('woff2');
+  font-weight: 500;
+}
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./fonts.css";
