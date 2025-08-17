@@ -1,4 +1,5 @@
 import Header from "@/modules/home/Header";
+import HeroSection from "@/modules/home/HeroSection";
 
 const Home = () => {
   return (
@@ -6,7 +7,9 @@ const Home = () => {
       <div className="w-full">
         <Header />
       </div>
-      <div>Hero section</div>
+      <div>
+        <HeroSection />
+      </div>
     </div>
   );
 };
