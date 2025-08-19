@@ -1,4 +1,4 @@
-import { ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronRight, ArrowRight, CopyIcon } from "lucide-react";
 import { TextShimmer } from "@/components/motion-primitives/text-shimmer";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { Button } from "@/components/ui/button";
