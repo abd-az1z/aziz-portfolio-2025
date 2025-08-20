@@ -11,7 +11,7 @@ export const PMCardTopLeft = () => (
       group border-white border p-6 relative flex size-full flex-col justify-between overflow-hidden rounded-xl
       hover:[box-shadow:inset_0_0_100px_rgba(255,255,255,0.12)]
       transform-gpu
-      col-span-6 md:col-span-3 lg:col-span-4 max-md:h-[21rem]
+      col-span-6 md:col-span-3 lg:col-span-4 max-md:h-[21rem] bg-black
     "
   >
     <div
