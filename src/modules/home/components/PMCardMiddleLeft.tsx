@@ -153,7 +153,7 @@ export const PMCardMiddleLeft = () => (
     {/* BACKGROUND LAYER */}
     <div className="absolute inset-0 -z-10 pointer-events-none">
       {/* base true black */}
-      <div className="absolute inset-0 bg-black" />
+      <div className="absolute inset-0 bg-black"/>
 
       <div
         aria-hidden
