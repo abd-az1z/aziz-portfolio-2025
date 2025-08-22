@@ -97,9 +97,7 @@ function DottedGlobe({
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
-            array={positions}
-            count={positions.length / 3}
-            itemSize={3}
+            args={[positions, 3]}
           />
         </bufferGeometry>
         <pointsMaterial

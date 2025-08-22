@@ -71,7 +71,6 @@ export const PMCardBottomRight = () => {
     className={`
       relative overflow-hidden rounded-2xl border 
       transition-all duration-300 ease-out
-      hover:[box-shadow:inset_0_0_90px_rgba(255,255,255,0.12)]
       transform-gpu
       col-span-6 md:col-span-6 lg:col-span-4 max-md:h-[21rem]
       bg-[linear-gradient(180deg,rgba(255,255,255,0.02)_0%,rgba(0,0,0,0)_30%)]

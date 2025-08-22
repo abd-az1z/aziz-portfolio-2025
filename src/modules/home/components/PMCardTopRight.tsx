@@ -46,7 +46,7 @@ export const PMCardTopRight = ({}: PMCardTopRightProps) => {
   <div
     className="shadow-[inset_0_0_60px_rgba(255,255,255,0.08)] 
       group border relative flex size-full flex-col justify-between overflow-hidden rounded-xl
-      hover:[box-shadow:inset_0_0_80px_rgba(255,255,255,0.12)]
+      
       transform-gpu
       col-span-6 md:col-span-3 lg:col-span-2 md:row-span-2 max-md:min-h-[35rem] bg-black
     "
