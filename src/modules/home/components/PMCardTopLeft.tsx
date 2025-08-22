@@ -17,7 +17,7 @@ export const PMCardTopLeft = () => (
     <div
       className="relative flex items-center h-1/2 rounded-xl overflow-hidden"
       style={{
-        backgroundImage: `url('/card1.jpg')`,
+        backgroundImage: `url('./images/card1.jpg')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

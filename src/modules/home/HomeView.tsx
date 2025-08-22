@@ -1,3 +1,4 @@
+import { CuratedWork } from "./ui/CuratedWork";
 import Header from "./ui/Header";
 import HeroSection from "./ui/HeroSection";
 import PortfolioMosaic from "./ui/PortfolioMosaic";
@@ -7,9 +8,10 @@ const HomeView = () => {
     <div className="min-h-screen w-full bg-background">
 
       <Header />
-      <main className="pt-16">
+      <main className="py-16 ">
         <HeroSection />
         <PortfolioMosaic />
+        <CuratedWork />
       </main>
     </div>
   );
