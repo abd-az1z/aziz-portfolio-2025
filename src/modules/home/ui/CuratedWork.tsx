@@ -1,4 +1,3 @@
-import { BiRightArrow } from "react-icons/bi";
 import ProjectsScrollShowcase from "../components/ProjectsScrollShowcase";
 import { LucideArrowRight } from "lucide-react";
 import Link from "next/link";

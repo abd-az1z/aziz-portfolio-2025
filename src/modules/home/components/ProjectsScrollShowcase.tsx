@@ -2,14 +2,15 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
+import { Cursor } from '@/components/motion-primitives/cursor';
 
 export type Project = {
   id: string;
   title: string;
   blurb: string;
   tags?: string[];
-  points?: string[]; // bullet points for the details side
-  video?: string; // optional video URL
+  points?: string[]; 
+  video?: string; 
   link?: string;
 };
 
