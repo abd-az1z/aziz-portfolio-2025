@@ -1,0 +1,26 @@
+.flipPhoto {
+  --flipphoto-max: 360px;
+  width: 100%;
+  max-width: 240px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive max-widths */
+@media (min-width: 640px) {
+  .flipPhoto {
+    max-width: 280px;
+  }
+}
+
+@media (min-width: 768px) {
+  .flipPhoto {
+    max-width: 320px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .flipPhoto {
+    max-width: var(--flipphoto-max);
+  }
+}

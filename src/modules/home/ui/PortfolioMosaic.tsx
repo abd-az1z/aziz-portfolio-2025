@@ -6,7 +6,7 @@ import { PMCardBottomLeft } from "../components/PMCardBottomLeft";
 import { PMCardBottomRight } from "../components/PMCardBottomRight";
 
 const PortfolioMosaic = () => (
-  <div className="w-full max-w-7xl grid grid-cols-6 gap-4 px-4 sm:px-6 lg:px-8 lg:max-w-7xl mx-auto py-16 md:pt-32 md:pb-24 md:max-w-full md:auto-rows-[19rem] mb-20 md:my-20">
+  <div className="w-full max-w-7xl grid grid-cols-6 gap-4 px-4 sm:px-6 lg:px-8 lg:max-w-7xl mx-auto md:max-w-full md:auto-rows-[19rem] ">
     {/* Top Left Card */}
     <PMCardTopLeft />
     

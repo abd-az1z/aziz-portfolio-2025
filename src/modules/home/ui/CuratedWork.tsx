@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const CuratedWork = () => {
   return (
-    <div className="w-full max-w-7xl gap-4 px-4 sm:px-6 lg:px-8 lg:max-w-7xl mx-auto py-16 md:pt-32 md:pb-24 md:max-w-full">
+    <div className="w-full max-w-7xl gap-4 px-4 sm:px-6 lg:px-8 lg:max-w-7xl mx-auto md:max-w-full">
       <div className="flex flex-col items-center w-full gap-4">
         <p className="text-zinc-300 font-medium tracking-wide uppercase">
           FEATURED PROJECTS

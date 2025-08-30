@@ -2,11 +2,28 @@ import { ChevronRight, ArrowRight } from "lucide-react";
 import { TextShimmer } from "@/components/motion-primitives/text-shimmer";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { Button } from "@/components/ui/button";
+import { Particles } from "@/components/magicui/particles";
+
+
 const HeroSection = () => {
   return (
-    <section className="w-full max-w-7xl flex items-center flex-col mx-auto px-4 sm:px-6 lg:px-8 py-16 md:pt-32 md:pb-24">
+    <section className="relative w-full max-w-7xl flex gap-8 md:gap-12 items-center flex-col mx-auto px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
+      {/* Particles Background */}
+      <div className="fixed inset-0 w-screen h-screen -z-10">
+        <Particles
+          quantity={150}
+          className="absolute inset-0 w-full h-full"
+          color="#ffffff"
+          vx={0.2}
+          vy={0.2}
+          size={0.8}
+          staticity={20}
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neutral-950/90 to-neutral-950 -z-[5]" />
+      
       {/* Announcement Banner */}
-      <div className="flex  gap-2 items-center justify-center bg-accent/10 border border-accent/20 rounded-full px-2 py-1 text-sm font-medium  mb-8 md:mb-12 w-fit hover:bg-accent/20 transition-colors cursor-pointer ">
+      <div className="flex  gap-2 items-center justify-center !bg-transparent border border-accent/20 rounded-full px-2 py-1 text-sm font-medium w-fit hover:bg-accent/20 transition-colors cursor-pointer ">
         <span className="px-2.5 py-0.5 bg-accent text-accent-foreground rounded-full text-xs font-medium ">
           New
         </span>
@@ -33,16 +50,16 @@ const HeroSection = () => {
           </span>
         </h1>
 
-        <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-white/80 max-w-xl mx-auto">
           Crafting beautiful, functional, and accessible web applications with
           modern technologies.
         </p>
       </div>
 
       {/* Profile Section */}
-      <div className="mt-10 flex flex-col items-center">
+      <div className="flex flex-col items-center">
         <div className="relative group"></div>
-        <div className="mt-6 text-center">
+        <div className="text-center">
           <TextEffect className="text-xl sm:text-2xl font-medium">
             Hello, I&apos;m Abdul Aziz
           </TextEffect>
@@ -60,4 +77,5 @@ const HeroSection = () => {
     </section>
   );
 };
+
 export default HeroSection;
