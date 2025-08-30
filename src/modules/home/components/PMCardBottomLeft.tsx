@@ -17,7 +17,7 @@ export const PMCardBottomLeft = () => (
     {/* Content for bottom left card */}
     <div className="w-full h-full flex flex-col items-center justify-evenly p-5 ">
       <div className="rounded-full overflow-hidden w-20 h-20 border p-3">
-        <img src="./logo.png" alt="abdul aziz" />
+        <img src="./images/logo.png" alt="abdul aziz" />
       </div>
       <h2 className="text-2xl text-center font-extrabold">
         Let&apos;s work together on your next project
