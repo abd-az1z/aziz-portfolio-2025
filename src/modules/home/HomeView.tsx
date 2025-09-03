@@ -1,22 +1,26 @@
-import { CuratedWork } from "./ui/CuratedWork";
+import CuratedWork from "./ui/CuratedWork";
 import Header from "./ui/Header";
 import HeroSection from "./ui/HeroSection";
 import PortfolioMosaic from "./ui/PortfolioMosaic";
 import RibbonStack from "./ui/RibbonStack";
-import TechStackSection from "./ui/TechStackSection";
 import KnowAboutMe from "./ui/KnowAboutMe";
+import ConceptCreation from "./ui/ConceptCreation";
+import Footer from "./ui/Footer";
 
 const HomeView = () => {
   return (
-    <div className="relative min-h-screen w-full bg-background overflow-hidden">
+    <div className="relative w-full bg-background">
       <Header />
-      <main className="md:py10 my-16 space-y-16">
+      <main className="relative md:mt-16 mt-8 z-0">
         <HeroSection />
         <PortfolioMosaic />
-        <CuratedWork />
-        <TechStackSection />
+        <div className="relative py-20 z-0">
+          <CuratedWork />
+        </div>
         <RibbonStack />
         <KnowAboutMe />
+        <ConceptCreation />
+        <Footer />
       </main>
     </div>
   );

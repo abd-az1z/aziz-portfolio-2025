@@ -34,18 +34,20 @@ export function TextLoop({
   const items = Children.toArray(children);
 
   useEffect(() => {
+    if (onIndexChange) {
+      onIndexChange(currentIndex);
+    }
+  }, [currentIndex, onIndexChange]);
+
+  useEffect(() => {
     if (!trigger) return;
 
     const intervalMs = interval * 1000;
     const timer = setInterval(() => {
-      setCurrentIndex((current) => {
-        const next = (current + 1) % items.length;
-        onIndexChange?.(next);
-        return next;
-      });
+      setCurrentIndex((current) => (current + 1) % items.length);
     }, intervalMs);
     return () => clearInterval(timer);
-  }, [items.length, interval, onIndexChange, trigger]);
+  }, [items.length, interval, trigger]);
 
   const motionVariants: Variants = {
     initial: { y: 20, opacity: 0 },

@@ -2,7 +2,7 @@ import ProjectsScrollShowcase from "../components/ProjectsScrollShowcase";
 import { LucideArrowRight } from "lucide-react";
 import Link from "next/link";
 
-export const CuratedWork = () => {
+const CuratedWork = () => {
   return (
     <div className="w-full max-w-7xl gap-4 px-4 sm:px-6 lg:px-8 lg:max-w-7xl mx-auto md:max-w-full">
       <div className="flex flex-col items-center w-full gap-4">
@@ -25,3 +25,4 @@ export const CuratedWork = () => {
     </div>
   );
 };
+export default CuratedWork;
