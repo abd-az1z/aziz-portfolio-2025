@@ -1,22 +1,57 @@
 "use client";
 
 import { CommandIcon, Menu } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import NavbarItems from "../components/NavbarItems";
 import Image from "next/image";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHeroInView, setIsHeroInView] = useState(true);
+  const headerRef = useRef<HTMLElement>(null);
+  const heroSectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsHeroInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of hero is visible
+        rootMargin: '-100px 0px 0px 0px' // Adjust this to control when the header should shrink
+      }
+    );
+
+    // Find the hero section (you might need to adjust this selector)
+    const heroSection = document.querySelector('#hero-section');
+    if (heroSection) {
+      observer.observe(heroSection);
+    }
+
+    return () => {
+      if (heroSection) {
+        observer.unobserve(heroSection);
+      }
+    };
+  }, []);
 
   return (
     <header
+      ref={headerRef}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/95 backdrop-blur-xs "
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/95 backdrop-blur-xs",
+        !isHeroInView && "py-2 "
       )}
     >
-      <div className="mx-auto px-8 py-4 md:p-8 md:px-10">
-        <div className="flex items-center justify-between h-14">
+      <div className={cn(
+        "mx-auto px-8 transition-all duration-300",
+        isHeroInView ? "py-4 md:p-8 md:px-10" : "py-2 md:px-6"
+      )}>
+        <div className={cn(
+          "flex items-center justify-between transition-all duration-300",
+          isHeroInView ? "h-14" : "h-10"
+        )}>
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-medium">

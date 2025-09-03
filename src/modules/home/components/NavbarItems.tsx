@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { BorderTrail } from "@/components/motion-primitives/border-trail";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -44,11 +45,14 @@ const NavbarItems = ({ isMobile = false }: NavbarItemsProps) => {
             {link.label}
           </Link>
         ))}
-        <button 
-          className="w-full mt-2 py-3 text-base font-medium rounded-lg border-2 border-foreground/10 hover:border-foreground/20 transition-colors"
-        >
-          Book a Call
-        </button>
+        <div className="relative mt-2">
+          <button 
+            className="w-full py-3 text-base font-medium rounded-lg border-2 border-foreground/10 hover:border-foreground/20 transition-colors relative overflow-hidden"
+          >
+            <span className="relative z-10">Book a Call</span>
+            <BorderTrail className="opacity-0 group-hover:opacity-100 transition-opacity" size={20} />
+          </button>
+        </div>
       </div>
     );
   }
@@ -69,11 +73,14 @@ const NavbarItems = ({ isMobile = false }: NavbarItemsProps) => {
           {link.label}
         </Link>
       ))}
-      <button         
-        className="ml-2 px-4 py-2 text-sm font-medium rounded-full border-2 border-white/10 hover:border-white/50 transition-colors"
-      >
-        Book a Call
-      </button>
+      <div className="relative group ml-2">
+        <button        
+          className="px-4 py-2 text-sm font-medium rounded-full border-1 border-white/10 relative overflow-hidden"
+        >
+          <span className="relative z-10">Book a Call</span>
+          <BorderTrail className="opacity-100 transition-opacity" size={20} />
+        </button>
+      </div>
     </div>
   );
 };

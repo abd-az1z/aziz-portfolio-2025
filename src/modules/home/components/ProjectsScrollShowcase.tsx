@@ -2,7 +2,6 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { Cursor } from '@/components/motion-primitives/cursor';
 
 export type Project = {
   id: string;
@@ -149,7 +148,7 @@ function ProjectVisual({
   }, [inView]);
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative ">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}

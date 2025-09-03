@@ -7,7 +7,7 @@ import { Particles } from "@/components/magicui/particles";
 
 const HeroSection = () => {
   return (
-    <section className="relative w-full max-w-7xl flex gap-8 md:gap-12 items-center flex-col mx-auto px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
+    <section id="hero-section" className="relative w-full max-w-7xl flex gap-8 md:gap-12 items-center flex-col mx-auto px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
       {/* Particles Background */}
       <div className="fixed inset-0 w-screen h-screen -z-10">
         <Particles
@@ -20,7 +20,7 @@ const HeroSection = () => {
           staticity={20}
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neutral-950/90 to-neutral-950 -z-[5]" />
+      <div className="absolute  -z-[5]" />
       
       {/* Announcement Banner */}
       <div className="flex  gap-2 items-center justify-center !bg-transparent border border-accent/20 rounded-full px-2 py-1 text-sm font-medium w-fit hover:bg-accent/20 transition-colors cursor-pointer ">
