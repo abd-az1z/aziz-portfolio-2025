@@ -3,7 +3,7 @@
 import { CommandIcon, Menu } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import NavbarItems from "../components/NavbarItems";
+import NavbarItems from "../modules/home/components/NavbarItems";
 import Image from "next/image";
 
 const Header = () => {
