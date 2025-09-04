@@ -43,8 +43,8 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="text-white my-16 px-4 md:px-8">
-      <div className="max-w-7xl border rounded-4xl bg-zinc-900 p-10 mx-auto">
+    <footer className="text-white bg-black py-16 px-4  md:px-8">
+      <div className="max-w-7xl border rounded-4xl bg-[#0F0F0F] p-10 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Logo and Description */}
           <div className="space-y-4">
@@ -140,8 +140,10 @@ export default function Footer() {
                   href="mailto:contact@example.com"
                   className="flex items-center space-x-3 text-gray-200 hover:text-white"
                 >
-                  <Mail className="w-5 text-gray-500 h-5 flex-shrink-0" />
-                  <span>contact@example.com</span>
+                 <div className="flex items-center space-x-3">
+                 <Mail className="w-5 text-gray-500 h-5 mb-1 flex-shrink-0" />
+                 <span>contact@example.com</span>
+                 </div>
                 </AnimatedLink>
               </div>
               <div className="group py-1">
@@ -149,8 +151,10 @@ export default function Footer() {
                   href="tel:+15551234567"
                   className="flex items-center space-x-3 text-gray-200 hover:text-white"
                 >
-                  <Phone className="w-5 text-gray-500 h-5 flex-shrink-0" />
-                  <span>+1 (555) 123-4567</span>
+                 <div className="flex items-center space-x-3">
+                 <Phone className="w-5 text-gray-500 h-5 mb-1 flex-shrink-0" />
+                 <span>+1 (555) 123-4567</span>
+                 </div>
                 </AnimatedLink>
               </div>
               <div className="group py-1">
@@ -160,8 +164,10 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 text-gray-200 hover:text-white"
                 >
-                  <MapPin className="w-5 text-gray-500 h-5 flex-shrink-0" />
-                  <span>San Francisco, CA</span>
+                 <div className="flex items-center space-x-3">
+                 <MapPin className="w-5 text-gray-500 h-5 mb-1 flex-shrink-0" />
+                 <span>San Francisco, CA</span>
+                 </div>
                 </AnimatedLink>
               </div>
             </div>
