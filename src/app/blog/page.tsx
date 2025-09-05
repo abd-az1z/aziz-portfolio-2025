@@ -1,3 +1,4 @@
+ // list view (grid + filters)
 import BlogView from "@/modules/blog/BlogView"
 
 const page = () => {
