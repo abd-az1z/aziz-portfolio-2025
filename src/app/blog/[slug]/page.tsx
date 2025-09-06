@@ -32,12 +32,12 @@ export async function generateMetadata(
   };
 }
 
-interface PageProps {
+export default async function Page({
+  params,
+}: {
   params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-export default async function Page({ params }: PageProps) {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
   const { slug } = params;
   
   const row = (await getPostBySlug(slug)) as PostRow | null;
