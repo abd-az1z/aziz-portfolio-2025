@@ -11,7 +11,14 @@ import {
 } from "lucide-react";
 
 // Reusable underline animation component
-const AnimatedLink = ({ children, href, className = "", prefetch = false, ...props }) => (
+interface AnimatedLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  children: React.ReactNode;
+  href: string;
+  className?: string;
+  prefetch?: boolean;
+}
+
+const AnimatedLink = ({ children, href, className = "", prefetch = false, ...props }: AnimatedLinkProps) => (
   <div className="relative group">
     <Link
       href={href}
@@ -30,9 +37,9 @@ export default function Footer() {
 
   const QUICK_LINKS = [
     { label: "Home", id: "" },
-    { label: "About", id: "about" },
-    { label: "Projects", id: "projects" },
-    { label: "Blog", id: "blog" },
+    { label: "About", id: "/about" },
+    { label: "Projects", id: "/work" },
+    { label: "Blog", id: "/blog" },
   ];
 
   const SERVICES = [
@@ -103,7 +110,7 @@ export default function Footer() {
               {QUICK_LINKS.map(({ label, id }) => (
                 <li key={label} className="py-1">
                   <AnimatedLink 
-                    href={{ pathname: "/", hash: id }}
+                    href={id}
                     className="text-gray-200 hover:text-white text-base"
                     prefetch={false}
                   >
@@ -137,36 +144,36 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="group py-1">
                 <AnimatedLink 
-                  href="mailto:contact@example.com"
+                  href="mailto:mohdabdulaziz2023@gmail.com"
                   className="flex items-center space-x-3 text-gray-200 hover:text-white"
                 >
                  <div className="flex items-center space-x-3">
                  <Mail className="w-5 text-gray-500 h-5 mb-1 flex-shrink-0" />
-                 <span>contact@example.com</span>
+                 <span>abdulaziz@gmail.com</span>
                  </div>
                 </AnimatedLink>
               </div>
               <div className="group py-1">
                 <AnimatedLink 
-                  href="tel:+15551234567"
+                  href="tel:+12012681964"
                   className="flex items-center space-x-3 text-gray-200 hover:text-white"
                 >
                  <div className="flex items-center space-x-3">
                  <Phone className="w-5 text-gray-500 h-5 mb-1 flex-shrink-0" />
-                 <span>+1 (555) 123-4567</span>
+                 <span>+1 (201) xxx-xxxx</span>
                  </div>
                 </AnimatedLink>
               </div>
               <div className="group py-1">
                 <AnimatedLink 
-                  href="https://maps.google.com?q=San+Francisco,+CA"
+                  href="https://maps.google.com?q=Seattle,+WA,+USA"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 text-gray-200 hover:text-white"
                 >
                  <div className="flex items-center space-x-3">
                  <MapPin className="w-5 text-gray-500 h-5 mb-1 flex-shrink-0" />
-                 <span>San Francisco, CA</span>
+                 <span>Seattle, WA, USA</span>
                  </div>
                 </AnimatedLink>
               </div>

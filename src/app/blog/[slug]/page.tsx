@@ -1,34 +1,51 @@
-import { notFound } from 'next/navigation';
-import { POSTS } from "@/modules/blog/data/posts";
-import BlogIdView from "@/modules/blog/ui/BlogIdView";
-import type { Metadata } from 'next';
+// app/blog/[slug]/page.tsx
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import BlogIdView from "@/modules/blog/BlogIdView";
+import { getPostBySlug } from "@/server/db/queries";
+import type { PostRow } from "@/modules/blog/types/posts";
+import { toPostDetail } from "@/modules/blog/lib/mappers";
 
-const getPostBySlug = (slug: string) => {
-  return POSTS.find((post) => post.slug === slug);
-};
-
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = getPostBySlug(params.slug);
+export async function generateMetadata(
+  { params }: { params: { slug: string } }
+): Promise<Metadata> {
+  // Wait for params to be resolved
+  const slug = await Promise.resolve(params.slug);
   
-  if (!post) {
-    return {};
-  }
+  const row = (await getPostBySlug(slug)) as PostRow | null;
+  if (!row) return {};
 
+  const post = toPostDetail(row);
   return {
     title: `${post.title} | Blog`,
     description: post.summary,
+    openGraph: {
+      title: post.title,
+      description: post.summary,
+      images: post.cover ? [{ url: post.cover }] : undefined,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.summary,
+      images: post.cover ? [post.cover] : undefined,
+    },
   };
 }
 
-export default function Page({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug);
+export default async function Page({ params }: { params: { slug: string } }) {
+  // Extract slug from params
+  const { slug } = params;
+  
+  // Fetch the post data
+  const row = (await getPostBySlug(slug)) as PostRow | null;
+  if (!row) notFound();
 
-  if (!post) {
-    notFound();
-  }
+  const post = toPostDetail(row);
 
   return (
-    <div className='bg-background'>
+    <div className="bg-background">
       <BlogIdView post={post} />
     </div>
   );
