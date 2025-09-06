@@ -10,7 +10,6 @@ import {
   CopyrightIcon,
 } from "lucide-react";
 
-// Reusable underline animation component
 interface AnimatedLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
   href: string;

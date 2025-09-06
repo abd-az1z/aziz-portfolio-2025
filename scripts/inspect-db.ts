@@ -2,10 +2,9 @@ import { db } from "@/server/db/client";
 import { posts } from "@/server/db/schema";
 
 async function inspectDatabase() {
-  console.log("Inspecting database...");
+  // console.log("Inspecting database...");
   
   try {
-    // Get all posts
     const allPosts = await db.select().from(posts);
     console.log(`\nFound ${allPosts.length} posts in the database.`);
     
@@ -19,9 +18,8 @@ async function inspectDatabase() {
       console.log(`Created: ${post.createdAt}`);
     });
     
-    // Check the schema
-    console.log("\nDatabase schema:");
-    console.log(JSON.stringify(posts, null, 2));
+    // console.log("\nDatabase schema:");
+    // console.log(JSON.stringify(posts, null, 2));
     
   } catch (error) {
     console.error("Error inspecting database:", error);

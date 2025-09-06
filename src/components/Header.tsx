@@ -18,12 +18,11 @@ const Header = () => {
         setIsHeroInView(entry.isIntersecting);
       },
       {
-        threshold: 0.1, // Trigger when 10% of hero is visible
-        rootMargin: '-100px 0px 0px 0px' // Adjust this to control when the header should shrink
+        threshold: 0.1,
+        rootMargin: '-100px 0px 0px 0px'
       }
     );
 
-    // Find the hero section (you might need to adjust this selector)
     const heroSection = document.querySelector('#hero-section');
     if (heroSection) {
       observer.observe(heroSection);

@@ -9,16 +9,13 @@ async function seed() {
   console.log("Starting seed...");
   
   try {
-    // Clear existing data
     await db.delete(posts);
     console.log("Cleared existing posts");
 
-    // Insert new posts
     const insertedPosts = await db
       .insert(posts)
       .values(
         postsData.map((post) => {
-          // Ensure all required fields are present
           if (!post.content) {
             throw new Error(`Missing content for post: ${post.title}`);
           }
@@ -27,9 +24,9 @@ async function seed() {
             slug: post.slug,
             title: post.title,
             description: post.description,
-            content: post.content, // Now we know this is defined
+            content: post.content, 
             coverUrl: post.coverUrl,
-            coverAlt: post.coverAlt || '', // Provide a default empty string if null
+            coverAlt: post.coverAlt || '',
             tags: post.tags,
             createdAt: new Date(post.createdAt),
           };

@@ -1,23 +1,25 @@
- // tags + sort
 "use client";
 import { SearchIcon, XIcon } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-export default function BlogFilters({ allTags }: { allTags: string[] }) {
+export default function BlogFilters() {
   const router = useRouter();
   const sp = useSearchParams();
   const [searchQuery, setSearchQuery] = useState<string>(sp.get("q") || "");
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   
-  // Update search query when URL changes (e.g., when navigating back/forward)
   useEffect(() => {
     setSearchQuery(sp.get("q") || "");
   }, [sp]);
 
   const updateSearchParam = (key: string, value: string) => {
     const next = new URLSearchParams(sp.toString());
-    value ? next.set(key, value) : next.delete(key);
+    if (value) {
+      next.set(key, value);
+    } else {
+      next.delete(key);
+    }
     router.push(`/blog?${next.toString()}`);
   };
 
@@ -25,18 +27,15 @@ export default function BlogFilters({ allTags }: { allTags: string[] }) {
     const value = e.target.value;
     setSearchQuery(value);
     
-    // Clear previous timeout
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
     
-    // Set new timeout for debouncing
     timeoutRef.current = setTimeout(() => {
       updateSearchParam("q", value);
-    }, 300); // 300ms delay
+    }, 300); 
   };
 
-  // Clear timeout on component unmount
   useEffect(() => {
     return () => {
       if (timeoutRef.current) {

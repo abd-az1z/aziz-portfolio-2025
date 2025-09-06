@@ -1,4 +1,3 @@
-// modules/blog/BlogIdView.tsx
 "use client";
 
 import BlogIdContent from "./components/BlogIdContent";

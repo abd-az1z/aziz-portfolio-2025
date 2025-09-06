@@ -1,6 +1,3 @@
-// seed/posts-aug-2025.ts
-// Type hint (optional): type NewPost = typeof posts.$inferInsert;
-
 export const postsData = [
   {
     slug: "on-device-agents-are-here-privacy-first-ai-on-your-phone",
@@ -106,94 +103,6 @@ We'll walk through building a simple AI-powered feature using Next.js 15's new c
     coverAlt: "Robotic arm assembling components on a line",
     tags: ["Agents", "Workflow", "Orchestration", "DevOps", "Safety"]
   },
-//   {
-//     slug: "promptless-uis-designing-ai-that-feels-native",
-//     title: "Promptless UIs: Designing AI That Feels Native",
-//     description:
-//       "Great AI products hide prompts behind affordances. Learn patterns for suggestions, inline actions, semantic search over help content, and when to reveal advanced controls for power users.",
-//     createdAt: "2025-08-14T21:02:00.000Z",
-//     coverUrl:
-//       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80",
-//     coverAlt: "Minimalistic UI mockups on a desk",
-//     tags: ["Product", "UX", "AI Design", "Prompt Engineering"]
-//   },
-//   {
-//     slug: "evaluation-that-matters-building-an-ai-quality-loop",
-//     title: "Evaluation That Matters: Building an AI Quality Loop",
-//     description:
-//       "Offline evals are table stakes. We show how to combine golden sets, synthetic edge cases, online metrics, and human review queues to close the loop. Includes a lightweight schema for tracing and error taxonomy.",
-//     createdAt: "2025-08-17T12:30:00.000Z",
-//     coverUrl:
-//       "https://images.unsplash.com/photo-1551281044-8d8e88b50f2b?auto=format&fit=crop&w=1400&q=80",
-//     coverAlt: "Dashboard with charts and analytics",
-//     tags: ["Evaluation", "Observability", "LLMOps", "Telemetry"]
-//   },
-//   {
-//     slug: "cost-down-quality-up-inference-optimization-playbook",
-//     title: "Cost Down, Quality Up: The 2025 Inference Optimization Playbook",
-//     description:
-//       "Token budgeting, early-exit decoders, speculative decoding, and caching can cut costs by 40–70%. We share a pragmatic checklist and a few traps that inflate your bill without improving UX.",
-//     createdAt: "2025-08-20T08:55:00.000Z",
-//     coverUrl:
-//       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80",
-//     coverAlt: "Calculator and financial charts on a workspace",
-//     tags: ["Scaling", "Performance", "Inference", "Cost Optimization"]
-//   },
-//   {
-//     slug: "secure-by-default-guardrails-and-compliance-for-ai",
-//     title: "Secure by Default: Guardrails & Compliance for AI",
-//     description:
-//       "From prompt injection and data exfiltration to PII redaction and role-based tools, here’s a secure-by-default posture for AI systems. Includes a minimal threat model template you can adapt to your org.",
-//     createdAt: "2025-08-22T19:15:00.000Z",
-//     coverUrl:
-//       "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1400&q=80",
-//     coverAlt: "Lock icon on a screen representing cybersecurity",
-//     tags: ["Security", "Compliance", "Guardrails", "PII"]
-//   },
-//   {
-//     slug: "multimodal-in-production-vision-audio-and-docs",
-//     title: "Multimodal in Production: Vision, Audio, and Docs",
-//     description:
-//       "Real-world pipelines for OCR + layout, screenshot QA, meeting notes with diarization, and image-grounded chat. We share a reference stack and tips for keeping latency predictable under load.",
-//     createdAt: "2025-08-24T14:18:00.000Z",
-//     coverUrl:
-//       "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
-//     coverAlt: "Collage of camera, microphone, and documents",
-//     tags: ["Multimodal", "Vision", "Audio", "Docs", "Production"]
-//   },
-//   {
-//     slug: "from-pocs-to-products-hardening-your-ai-stack",
-//     title: "From POCs to Products: Hardening Your AI Stack",
-//     description:
-//       "What changes when you go from a weekend demo to 10k DAU? We cover schema design, audit logs, feature flags for models/tools, and data retention policies that keep you compliant and sane.",
-//     createdAt: "2025-08-27T07:48:00.000Z",
-//     coverUrl:
-//       "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1400&q=80",
-//     coverAlt: "Server racks with blue LEDs",
-//     tags: ["Architecture", "Prod Readiness", "SRE", "Compliance"]
-//   },
-//   {
-//     slug: "human-feedback-2025-synthetic-vs-real-tradeoffs",
-//     title: "Human Feedback in 2025: Synthetic vs. Real Trade-offs",
-//     description:
-//       "Synthetic labels speed iteration; human feedback grounds quality. We outline when to use which, how to price review time, and ways to prevent label leakage into eval sets.",
-//     createdAt: "2025-08-29T16:22:00.000Z",
-//     coverUrl:
-//       "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1400&q=80",
-//     coverAlt: "Team collaborating with sticky notes on a wall",
-//     tags: ["RLHF", "Data", "Quality", "Evaluation"]
-//   },
-//   {
-//     slug: "shipping-ai-assistants-in-b2b-from-pilot-to-rollout",
-//     title: "Shipping AI Assistants in B2B: From Pilot to Rollout",
-//     description:
-//       "Lessons from rolling out AI assistants to customer-facing teams: consent flows, measurable value, fallback paths, and playbooks for change management so adoption sticks.",
-//     createdAt: "2025-08-31T11:10:00.000Z",
-//     coverUrl:
-//       "https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1400&q=80",
-//     coverAlt: "Business meeting with laptops and documents",
-//     tags: ["B2B", "Assistants", "Go-to-Market", "Change Management"]
-//   }
 ] satisfies Array<{
   slug: string;
   title: string;

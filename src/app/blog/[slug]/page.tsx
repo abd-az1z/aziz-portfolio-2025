@@ -1,4 +1,3 @@
-// app/blog/[slug]/page.tsx
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import BlogIdView from "@/modules/blog/BlogIdView";
@@ -9,7 +8,6 @@ import { toPostDetail } from "@/modules/blog/lib/mappers";
 export async function generateMetadata(
   { params }: { params: { slug: string } }
 ): Promise<Metadata> {
-  // Wait for params to be resolved
   const slug = await Promise.resolve(params.slug);
   
   const row = (await getPostBySlug(slug)) as PostRow | null;
@@ -35,10 +33,8 @@ export async function generateMetadata(
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  // Extract slug from params
   const { slug } = params;
   
-  // Fetch the post data
   const row = (await getPostBySlug(slug)) as PostRow | null;
   if (!row) notFound();
 

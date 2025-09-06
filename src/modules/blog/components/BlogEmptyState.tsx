@@ -1,4 +1,3 @@
-// no blogs found
 const BlogEmptyState = () => {
   return (
     <div>BlogEmptyState</div>

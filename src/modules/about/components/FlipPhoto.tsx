@@ -20,7 +20,6 @@ export default function FlipPhoto({
   className,
   rounded = "rounded-3xl",
 }: FlipPhotoProps) {
-  // Calculate responsive size based on viewport width
   const responsiveSize = `min(90vw, ${size}px)`;
 
   return (
