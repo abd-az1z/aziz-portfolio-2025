@@ -1,7 +1,6 @@
 'use client';
-import { ReactNode } from 'react';
-import { motion, Variants } from 'motion/react';
-import React from 'react';
+import React, { ReactNode, useMemo } from 'react';
+import { motion, type Variants } from 'framer-motion';
 
 export type PresetType =
   | 'fade'
@@ -115,19 +114,29 @@ function AnimatedGroup({
   const containerVariants = variants?.container || selectedVariants.container;
   const itemVariants = variants?.item || selectedVariants.item;
 
-  const MotionComponent = React.useMemo(
-    () => motion.create(as as keyof JSX.IntrinsicElements),
-    [as]
-  );
-  const MotionChild = React.useMemo(
-    () => motion.create(asChild as keyof JSX.IntrinsicElements),
-    [asChild]
-  );
+  const MotionComponent = useMemo(() => {
+    const Component = motion[as as keyof typeof motion] || motion.div;
+    return Component as React.ComponentType<{
+      initial?: string;
+      animate?: string;
+      variants?: Variants;
+      className?: string;
+      children?: ReactNode;
+    }>;
+  }, [as]);
+
+  const MotionChild = useMemo(() => {
+    const Component = motion[asChild as keyof typeof motion] || motion.span;
+    return Component as React.ComponentType<{
+      variants: Variants;
+      children?: ReactNode;
+    }>;
+  }, [asChild]);
 
   return (
     <MotionComponent
-      initial='hidden'
-      animate='visible'
+      initial="hidden"
+      animate="visible"
       variants={containerVariants}
       className={className}
     >

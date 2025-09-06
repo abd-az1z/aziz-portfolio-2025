@@ -47,8 +47,8 @@ export default function ConceptCreation() {
           minWidth: 200.00,
           scale: 1.00,
           scaleMobile: 1.00,
-          backgroundColor: 0x000000,  // Black background
-          color: 0x6f706e  // Gray rings
+          backgroundColor: 0x000000,
+          color: 0x6f706e
         });
       }
     };
@@ -58,7 +58,6 @@ export default function ConceptCreation() {
     const handleResize = () => {
       if (vantaEffect.current) {
         vantaEffect.current.setOptions({
-          // Only pass valid Vanta options here
           minWidth: Math.min(window.innerWidth, 1200),
           minHeight: Math.min(window.innerHeight, 800)
         });

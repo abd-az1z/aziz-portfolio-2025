@@ -1,4 +1,3 @@
-// modules/blog/views/BlogView.tsx (your file)
 import BlogCard from "@/modules/blog/components/BlogCard";
 import BlogFilters from "@/modules/blog/components/BlogFilters";
 import { filterByTag, search, sortPosts } from "@/modules/blog/lib/filter";
@@ -16,10 +15,9 @@ export default async function BlogView({
   const q = searchParams?.q || "";
   const sort = (searchParams?.sort as "newest" | "oldest") || "newest";
 
-  const rows = await getPosts(q);         // PostRow[]
+  const rows = await getPosts(q);
   const cards: PostCard[] = rows.map(toPostCard);
-
-  const allTags = Array.from(new Set(cards.flatMap(p => p.tags)));
+  
   const filtered = sortPosts(search(filterByTag(cards, tag), q), sort);
 
   return (
@@ -42,13 +40,15 @@ export default async function BlogView({
           </div>
         </header>
 
-        <BlogFilters allTags={allTags} />
+        <BlogFilters />
 
         {filtered.length === 0 ? (
           <p className="text-zinc-400">No posts found.</p>
         ) : (
           <div className="flex flex-col gap-16 max-w-4xl mx-auto">
-            {filtered.map((p) => <BlogCard key={p.id} post={p} />)}
+            {filtered.map((post) => (
+              <BlogCard key={post.id} post={post} />
+            ))}
           </div>
         )}
       </main>

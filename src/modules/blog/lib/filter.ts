@@ -1,27 +1,30 @@
 // tag + search + sort helpers
-import { Post } from "../types/posts";
+import type { PostCard } from "@/modules/blog/types/posts";
 
 export type SortKey = "newest" | "oldest";
-export function sortPosts(posts: Post[], sort: SortKey = "newest") {
-  return [...posts].sort((a,b) =>
+
+export function sortPosts(posts: PostCard[], sort: SortKey = "newest"): PostCard[] {
+  return [...posts].sort((a, b) =>
     sort === "newest"
-      ? +new Date(b.date) - +new Date(a.date)
-      : +new Date(a.date) - +new Date(b.date)
+      ? new Date(b.dateISO).getTime() - new Date(a.dateISO).getTime()
+      : new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()
   );
 }
 
-export function filterByTag(posts: Post[], tag?: string) {
+export function filterByTag(posts: PostCard[], tag?: string): PostCard[] {
   if (!tag) return posts;
   const t = tag.toLowerCase();
-  return posts.filter(p => p.tags.some(x => x.toLowerCase() === t));
+  return posts.filter((post) => 
+    post.tags.some((tag) => tag.toLowerCase() === t)
+  );
 }
 
-export function search(posts: Post[], q?: string) {
+export function search(posts: PostCard[], q?: string): PostCard[] {
   if (!q) return posts;
   const s = q.toLowerCase();
-  return posts.filter(p =>
-    p.title.toLowerCase().includes(s) ||
-    p.summary.toLowerCase().includes(s) ||
-    p.tags.join(" ").toLowerCase().includes(s)
+  return posts.filter((post) =>
+    post.title.toLowerCase().includes(s) ||
+    (post.summary && post.summary.toLowerCase().includes(s)) ||
+    post.tags.join(" ").toLowerCase().includes(s)
   );
 }
