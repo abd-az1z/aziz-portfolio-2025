@@ -4,8 +4,6 @@ import { useSearchParams } from 'next/navigation';
 import BlogCard from "@/modules/blog/components/BlogCard";
 import BlogFilters from "@/modules/blog/components/BlogFilters";
 import { filterByTag, search, sortPosts } from "@/modules/blog/lib/filter";
-import { getPosts } from "@/server/db/queries";
-import { toPostCard } from "@/modules/blog/lib/mappers";
 import type { PostCard } from "@/modules/blog/types/posts";
 import { useEffect, useState } from 'react';
 
@@ -22,9 +20,12 @@ export default function BlogView() {
     const fetchPosts = async () => {
       try {
         setIsLoading(true);
-        const rows = await getPosts(q);
-        const cards: PostCard[] = rows.map(toPostCard);
-        setPosts(cards);
+        const response = await fetch('/api/posts');
+        if (!response.ok) {
+          throw new Error('Failed to fetch posts');
+        }
+        const { posts } = await response.json();
+        setPosts(posts);
       } catch (error) {
         console.error('Error fetching posts:', error);
       } finally {
@@ -33,7 +34,7 @@ export default function BlogView() {
     };
 
     fetchPosts();
-  }, [q]);
+  }, []);
 
   if (isLoading) {
     return null; // The Suspense fallback will handle the loading state
