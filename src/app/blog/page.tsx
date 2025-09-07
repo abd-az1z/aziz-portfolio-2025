@@ -1,8 +1,13 @@
+import { Suspense } from 'react';
 import BlogView from "@/modules/blog/BlogView"
+import { BlogViewSkeleton } from "@/modules/blog/components/BlogViewSkeleton";
 
-const page = () => {
+export const dynamic = 'force-dynamic';
+
+export default function Page() {
   return (
-    <BlogView />
-  )
+    <Suspense fallback={<BlogViewSkeleton />}>
+      <BlogView />
+    </Suspense>
+  );
 }
-export default page

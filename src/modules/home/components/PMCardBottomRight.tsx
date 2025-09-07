@@ -2,12 +2,7 @@
 
 import { useState } from 'react';
 import { InfiniteSlider } from '@/components/motion-primitives/infinite-slider'; 
-import { BiCarousel, BiRightArrowAlt } from "react-icons/bi";
-import { motion, AnimatePresence } from 'framer-motion';
-
-const style = {
-  cardMd: { boxShadow: 'inset 0 0 60px rgba(255,255,255,0.08)' },
-};
+import { BiCarousel } from "react-icons/bi";
 
 type MiniCard = {
   title: string;

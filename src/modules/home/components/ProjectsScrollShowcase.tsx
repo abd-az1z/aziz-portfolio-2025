@@ -131,11 +131,11 @@ function ProjectVisual({
     if (inView) onInView(project.id);
   }, [inView, onInView, project.id]);
 
-  // Play/Pause video only while in view; reset when leaving
+  // Play/Pause video based on inView and isActive state
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    if (inView) {
+    if (inView && isActive) {
       // Attempt play; ignore promise rejection on Safari/iOS
       const p = v.play();
       if (p && typeof p.catch === "function") p.catch(() => {});
@@ -144,11 +144,16 @@ function ProjectVisual({
       try {
         v.currentTime = 0;
       } catch {}
-    }
-  }, [inView]);
+    };
+  }, [inView, isActive]);
 
   return (
-    <div ref={ref} className="relative ">
+    <div 
+      ref={ref} 
+      className={`relative w-full h-full transition-opacity duration-300 ${
+        isActive ? 'opacity-100' : 'opacity-70 hover:opacity-90'
+      }`}
+    >
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}

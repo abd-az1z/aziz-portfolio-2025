@@ -7,10 +7,6 @@ const WORDS = [
   "AI-POWERED VIDEO CALLS",
 ] as const;
 
-const Separator = () => (
-  <span className="mx-6 text-white/70">✦</span>
-);
-
 export default function RibbonStackBg({ className }: { className?: string }) {
   return (
     <div
