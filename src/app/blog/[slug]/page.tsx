@@ -6,9 +6,9 @@ import type { PostRow } from "@/modules/blog/types/posts";
 import { toPostDetail } from "@/modules/blog/lib/mappers";
 
 export async function generateMetadata(
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
-  const slug = await Promise.resolve(params.slug);
+  const { slug } = await params;
   
   const row = (await getPostBySlug(slug)) as PostRow | null;
   if (!row) return {};
@@ -33,12 +33,11 @@ export async function generateMetadata(
 }
 
 interface PageProps {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ slug: string }>;
 }
 
 export default async function Page({ params }: PageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   
   const row = (await getPostBySlug(slug)) as PostRow | null;
   if (!row) notFound();

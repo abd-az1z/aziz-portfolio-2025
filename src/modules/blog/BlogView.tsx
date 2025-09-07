@@ -1,24 +1,45 @@
+'use client';
+
+import { useSearchParams } from 'next/navigation';
 import BlogCard from "@/modules/blog/components/BlogCard";
 import BlogFilters from "@/modules/blog/components/BlogFilters";
 import { filterByTag, search, sortPosts } from "@/modules/blog/lib/filter";
-import ConceptCreation from "../work/ui/ConceptCreation";
 import { getPosts } from "@/server/db/queries";
 import { toPostCard } from "@/modules/blog/lib/mappers";
 import type { PostCard } from "@/modules/blog/types/posts";
+import { useEffect, useState } from 'react';
 
-export const revalidate = 0;
+export default function BlogView() {
+  const searchParams = useSearchParams();
+  const [posts, setPosts] = useState<PostCard[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-export default async function BlogView({
-  searchParams,
-}: { searchParams?: Record<string, string> }) {
-  const tag = searchParams?.tag;
-  const q = searchParams?.q || "";
-  const sort = (searchParams?.sort as "newest" | "oldest") || "newest";
+  const tag = searchParams?.get('tag') || undefined;
+  const q = searchParams?.get('q') || '';
+  const sort = (searchParams?.get('sort') as 'newest' | 'oldest') || 'newest';
 
-  const rows = await getPosts(q);
-  const cards: PostCard[] = rows.map(toPostCard);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        setIsLoading(true);
+        const rows = await getPosts(q);
+        const cards: PostCard[] = rows.map(toPostCard);
+        setPosts(cards);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, [q]);
+
+  if (isLoading) {
+    return null; // The Suspense fallback will handle the loading state
+  }
   
-  const filtered = sortPosts(search(filterByTag(cards, tag), q), sort);
+  const filtered = sortPosts(search(filterByTag(posts, tag), q), sort);
 
   return (
     <div className="w-full relative">
@@ -52,7 +73,6 @@ export default async function BlogView({
           </div>
         )}
       </main>
-      <ConceptCreation />
     </div>
   );
 }
