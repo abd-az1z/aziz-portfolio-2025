@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import NavbarItems from "../modules/home/components/NavbarItems";
 import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -53,9 +54,9 @@ const Header = () => {
         )}>
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-medium">
+            <Link href="/" className="w-8 h-8 rounded-full flex items-center justify-center text-white font-medium">
               <Image src={"/logo.png"} alt="Logo" width={30} height={30} />
-            </div>
+            </Link>
           </div>
 
           {/* Navbar items */}

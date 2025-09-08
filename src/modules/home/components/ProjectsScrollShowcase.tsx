@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
+import { MobileProjectsShowcase } from "./ProjectsScrollShowcase.mobile";
 
 export type Project = {
   id: string;
@@ -163,13 +164,13 @@ function ProjectVisual({
       >
         {/* Header like the reference: big title + subtle arrow */}
         <div className="p-6 ">
-            <h4 className="max-w-[80%] pb-6 text-xl text-white/40">
+            <h4 className="max-w-full sm:max-w-[90%] md:max-w-[80%] pb-4 sm:pb-6 text-lg sm:text-xl text-white/40">
               {project.title}: {project.blurb.split(".")[0]}
             </h4>
         </div>
 
         {/* Media frame */}
-        <div className="px-4 pb-5">
+        <div className="px-2 sm:px-4 pb-4 sm:pb-5">
           <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-black/40 backdrop-blur-md shadow-2xl">
             <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-b from-fuchsia-500/20 via-violet-500/10 to-sky-500/0" />
 
@@ -185,8 +186,8 @@ function ProjectVisual({
                 <source src={project.video} type="video/mp4" />
               </video>
             ) : (
-              <div className="relative z-[1] grid place-content-center aspect-[21/9] text-white/70">
-                No preview
+              <div className="relative z-[1] grid place-content-center aspect-video md:aspect-[21/9] text-white/70 p-4 text-center text-sm md:text-base">
+                No preview available
               </div>
             )}
           </div>
@@ -238,18 +239,18 @@ function DetailPanel({ project }: { project: Project }) {
           </div>
         )}
 
-        <div className="mt-5 flex gap-3">
+        <div className="mt-5 flex flex-wrap gap-3">
           {project.link && (
             <a
               href={project.link}
-              className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium bg-white text-neutral-900 hover:bg-white/90 transition"
+              className="inline-flex items-center gap-1.5 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium bg-white text-neutral-900 hover:bg-white/90 transition flex-shrink-0"
             >
               Visit ↗
             </a>
           )}
           <a
             href={`#${project.id}`}
-            className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium border border-white/15 text-white/90 hover:bg-white/5"
+              className="inline-flex items-center gap-1.5 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium border border-white/15 text-white/90 hover:bg-white/5 flex-shrink-0"
           >
             Details
           </a>
@@ -269,13 +270,29 @@ export default function ScrollSyncedShowcase({
     () => projects.find((p) => p.id === activeId) ?? projects[0],
     [activeId, projects]
   );
+  
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
+  if (isMobile) {
+    return <MobileProjectsShowcase projects={projects} />;
+  }
 
   return (
-    <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-10 py-20">
-      <div className="grid grid-cols-1 gap-10 xl:gap-14 lg:[grid-template-columns:minmax(0,1fr)_440px]">
-        <div className="flex flex-col gap-14 scroll-smooth lg:pr-6">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-10 py-12 sm:py-16 md:py-20">
+      <div className="grid grid-cols-1 gap-8 sm:gap-10 xl:gap-14 lg:[grid-template-columns:minmax(0,1fr)_440px]">
+        <div className="flex flex-col gap-10 sm:gap-12 md:gap-14 scroll-smooth lg:pr-6 -mx-4 sm:mx-0 px-4 sm:px-0">
           {projects.map((p) => (
-            <section id={p.id} key={p.id} className="space-y-6">
+            <section id={p.id} key={p.id} className="space-y-4 sm:space-y-6">
               <ProjectVisual
                 project={p}
                 isActive={p.id === activeId}
@@ -288,7 +305,7 @@ export default function ScrollSyncedShowcase({
           ))}
         </div>
 
-        <div className="hidden lg:block lg:sticky lg:top-28 h-fit self-start max-w-[440px]">
+        <div className="hidden lg:block lg:sticky lg:top-28 h-fit self-start w-full max-w-[440px]">
           <DetailPanel project={active} />
           <nav className="mt-4 hidden lg:flex flex-col gap-2">
             {projects.map((p, i) => (
