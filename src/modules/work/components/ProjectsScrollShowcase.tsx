@@ -44,6 +44,29 @@ const DEMO: Project[] = [
     video: "/videos/CallSage.MP4",
   },
   {
+    id: "k72-clone",
+    title: "K72 Clone",
+    blurb:
+      "A clone of the award-winning creative agency website K72.ca, built to practice advanced front-end techniques, animations, and modern Next.js workflows.",
+    points: [
+      "Developed with Next.js, React, and TypeScript",
+      "Styled using Tailwind CSS for responsive layouts",
+      "Page transitions and animations inspired by the original K72 site",
+      "Optimized image handling and clean component-based structure",
+      "Deployed on Vercel with continuous integration",
+    ],
+    tags: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind",
+      "Vercel",
+      "GSAP",
+    ],
+    link: "https://k72-beta.vercel.app/",
+    video: "/videos/K72-Clone.mov",
+  },
+  {
     id: "saascribe",
     title: "SaaScribe AI",
     blurb:
