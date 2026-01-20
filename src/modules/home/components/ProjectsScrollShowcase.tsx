@@ -45,6 +45,29 @@ const DEMO: Project[] = [
     video: "/videos/CallSage.MP4",
   },
   {
+    id: "promptshrink",
+    title: "PromptShrink",
+    blurb:
+      "A lightweight, privacy-focused tool to compress and optimize your LLM prompts without losing meaning or functionality.",
+    points: [
+      "Built with Next.js 16, React 19, TypeScript, and TailwindCSS",
+      "Lossless compression preserving prompt meaning and structure",
+      "Privacy-first design with no data storage or logging",
+      "Real-time token count estimation and savings display",
+      "Lightning-fast optimization with minimal latency",
+      "Clean, intuitive UI for easy prompt compression",
+    ],
+    tags: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind",
+      "OpenAI",
+      "Vercel",
+    ],
+    link: "https://promptshrink.vercel.app/",
+  },
+  {
     id: "saascribe",
     title: "SaaScribe AI",
     blurb:

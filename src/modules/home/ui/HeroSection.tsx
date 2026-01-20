@@ -3,6 +3,8 @@ import { TextShimmer } from "@/components/motion-primitives/text-shimmer";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { Button } from "@/components/ui/button";
 import { Particles } from "@/components/magicui/particles";
+import Link from "next/link";
+import { LuLinkedin } from "react-icons/lu";
 
 
 const HeroSection = () => {
@@ -69,9 +71,19 @@ const HeroSection = () => {
         </div>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <Button size="lg" className="group font-semibold rounded-full bg-accent/10 text-white/80 border border-white/25 hover:bg-accent/5 ">
-            Let&apos;s Connect
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          <Link
+                href="https://linkedin.com/in/abdul-aziz-87296b179"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+              Let&apos;s Connect 
+             
+              </Link>
+              <LuLinkedin
+               className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
+          
         </div>
       </div>
     </section>

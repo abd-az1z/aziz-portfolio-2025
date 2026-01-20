@@ -38,14 +38,14 @@ export default function Footer() {
     { label: "Home", id: "" },
     { label: "About", id: "/about" },
     { label: "Projects", id: "/work" },
-    { label: "Blog", id: "/blog" },
+    // { label: "Blog", id: "/blog" },
   ];
 
   const SERVICES = [
     "Web Development",
     "UI/UX Design",
     "Mobile Apps",
-    "SEO",
+    // "SEO",
   ];
 
   return (

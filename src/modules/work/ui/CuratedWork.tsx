@@ -1,6 +1,4 @@
 import ProjectsScrollShowcase from "../components/ProjectsScrollShowcase";
-import { LucideArrowRight } from "lucide-react";
-import Link from "next/link";
 
 const CuratedWork = () => {
   return (
@@ -14,14 +12,6 @@ const CuratedWork = () => {
         </h2>
       </div>
       <ProjectsScrollShowcase />
-      <div className="flex items-center justify-center gap-2">
-        <p className="text-white tracking-wide ">
-          See more projects
-        </p>
-        <Link href="/work" className="rounded-full  p-1 border bg-accent/10 border-accent/30 hover:bg-accent/30 hover:border-accent/10  ">
-          <LucideArrowRight className="size-4" />
-        </Link>
-      </div>
     </div>
   );
 };
