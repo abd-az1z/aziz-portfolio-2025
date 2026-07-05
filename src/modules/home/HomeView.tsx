@@ -1,6 +1,7 @@
 import CuratedWork from "./ui/CuratedWork";
 import HeroSection from "./ui/HeroSection";
 import StatsBar from "./ui/StatsBar";
+import WorkExperience from "./ui/WorkExperience";
 import PortfolioMosaic from "./ui/PortfolioMosaic";
 import RibbonStack from "./ui/RibbonStack";
 import KnowAboutMe from "./ui/KnowAboutMe";
@@ -12,6 +13,7 @@ const HomeView = () => {
       <main className="relative md:mt-16 mt-8 z-0">
         <HeroSection />
         <StatsBar />
+        <WorkExperience />
         <PortfolioMosaic />
         <div className="relative md:py-20 py-10 z-0">
           <CuratedWork />
