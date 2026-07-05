@@ -1,6 +1,6 @@
 "use client";
 
-import { CommandIcon, Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import NavbarItems from "../modules/home/components/NavbarItems";
@@ -49,7 +49,7 @@ const Header = () => {
         isHeroInView ? "py-4 md:p-8 md:px-10" : "py-2 md:px-6"
       )}>
         <div className={cn(
-          "flex items-center justify-between transition-all duration-300",
+          "relative flex items-center justify-between transition-all duration-300",
           isHeroInView ? "h-14" : "h-10"
         )}>
           {/* Logo */}
@@ -59,19 +59,30 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Navbar items */}
-          <NavbarItems />
+          {/* Navbar items — centered */}
+          <div className="absolute left-1/2 -translate-x-1/2 hidden md:block">
+            <NavbarItems />
+          </div>
+
+          {/* Get in Touch — right */}
+          <a
+            href="mailto:mohdabdulaziz2023@gmail.com"
+            className="hidden md:inline-block px-4 py-2 text-sm font-medium rounded-full border border-white/10 hover:border-white/25 transition-colors"
+          >
+            Get in Touch
+          </a>
 
           {/* Mobile menu button */}
           <button
+            type="button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 -mr-2 rounded-md hover:bg-accent/10 transition-colors"
-            aria-expanded="false"
+            className="md:hidden p-2 -mr-2 rounded-md hover:bg-accent/10 transition-colors"
+            aria-expanded={isMenuOpen ? "true" : "false"}
           >
             {isMenuOpen ? (
-              <Menu className="h-6 w-6 text-white" />
+              <X className="h-6 w-6 text-white" />
             ) : (
-              <CommandIcon className="h-6 w-6 text-white" />
+              <Menu className="h-6 w-6 text-white" />
             )}
             <span className="sr-only">Toggle menu</span>
           </button>

@@ -42,19 +42,19 @@ const HeroSection = () => {
       {/* Main Heading */}
       <div className="max-w-4xl mx-auto text-center space-y-6">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl md:leading-20 leading-13 font-bold text-white/60 tracking-tight">
-          I help founders turn ideas <br className="hidden sm:block" />
-          into seamless{" "}
+          I engineer production AI platforms{" "}
+          <p className="text-2xl font-serif font-normal sm:text-3xl md:text-3xl lg:text-4xl ">powered by</p>
           <span
             className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-white italic "
             style={{ fontFamily: "NyghtSerif, serif" }}
           >
-            digital experiences
+            RAG, multi-agent systems, and backend APIs
           </span>
         </h1>
 
         <p className="text-lg md:text-xl text-white/80 max-w-xl mx-auto">
-          Crafting beautiful, functional, and accessible web applications with
-          modern technologies.
+          Building reliable AI infrastructure that connects models, data,
+          agents, and services into deployable systems.
         </p>
       </div>
 
@@ -72,7 +72,7 @@ const HeroSection = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <Button size="lg" className="group font-semibold rounded-full bg-accent/10 text-white/80 border border-white/25 hover:bg-accent/5 ">
           <Link
-                href="https://linkedin.com/in/abdul-aziz-87296b179"
+                href="https://www.linkedin.com/in/abdul-aziz-mohammed-87296b179"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"

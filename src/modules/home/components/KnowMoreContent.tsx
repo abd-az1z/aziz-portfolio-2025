@@ -44,7 +44,7 @@ export default function KnowMoreContent() {
         <div className="mt-6 flex flex-wrap items-center justify-center  gap-4 md:justify-start">
           <nav aria-label="Social links" className="flex items-center text-white/60 gap-3 sm:gap-5">
             <Link
-              href="https://www.linkedin.com/in/abdul-aziz-87296b179"
+              href="https://www.linkedin.com/in/abdul-aziz-mohammed-87296b179"
               aria-label="LinkedIn"
               className="inline-flex h-10 w-10 items-center justify-center rounded-full text-xl sm:text-[26px]  hover:text-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400/60"
             >
