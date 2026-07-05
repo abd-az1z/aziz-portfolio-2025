@@ -4,9 +4,7 @@ import WorkExperience from "./ui/WorkExperience";
 import CaseStudies from "./ui/CaseStudies";
 import SideProjects from "./ui/SideProjects";
 import TechStack from "./ui/TechStack";
-import RibbonStack from "./ui/RibbonStack";
-import KnowAboutMe from "./ui/KnowAboutMe";
-import ConceptCreation from "./ui/ConceptCreation";
+import ContactCTA from "./ui/ContactCTA";
 
 const HomeView = () => {
   return (
@@ -18,9 +16,7 @@ const HomeView = () => {
         <CaseStudies />
         <SideProjects />
         <TechStack />
-        <RibbonStack />
-        <KnowAboutMe />
-        <ConceptCreation />
+        <ContactCTA />
       </main>
     </div>
   );
