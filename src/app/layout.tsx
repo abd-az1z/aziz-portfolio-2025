@@ -20,18 +20,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Abdul Aziz — AI Platform Engineer",
+  title: "Abdul Aziz - AI Platform Engineer",
   description:
     "Software engineer building production AI platforms: RAG pipelines, backend architecture, and SaaS infrastructure that stays secure when it ships. 8 months at Agentnomics.ai, 50+ PRs merged to production.",
   openGraph: {
-    title: "Abdul Aziz — AI Platform Engineer",
+    title: "Abdul Aziz - AI Platform Engineer",
     description:
       "RAG pipelines, backend architecture, and production SaaS. 50+ PRs merged at Agentnomics.ai.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abdul Aziz — AI Platform Engineer",
+    title: "Abdul Aziz - AI Platform Engineer",
     description:
       "RAG pipelines, backend architecture, and production SaaS. 50+ PRs merged at Agentnomics.ai.",
   },

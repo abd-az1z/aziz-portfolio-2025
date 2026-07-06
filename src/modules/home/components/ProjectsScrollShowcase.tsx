@@ -214,7 +214,7 @@ export default function ScrollSyncedShowcase({
                   p.id === activeId ? "text-white" : "text-white/50"
                 }`}
               >
-                {String(i + 1).padStart(2, "0")} — {p.title}
+                {String(i + 1).padStart(2, "0")} - {p.title}
               </a>
             ))}
           </nav>

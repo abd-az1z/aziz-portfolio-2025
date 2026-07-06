@@ -14,7 +14,7 @@ export const PROJECTS: Project[] = [
     id: "ai-triage",
     title: "AI Triage System",
     blurb:
-      "AI agent that triages inbound return/refund emails into tickets, cites store policy, and safely auto-executes low-risk Stripe refunds — escalating edge cases to CSRs.",
+      "AI agent that triages inbound return/refund emails into tickets, cites store policy, and safely auto-executes low-risk Stripe refunds - escalating edge cases to CSRs.",
     points: [
       "Agentic workflow: email → ticket classification → policy citation",
       "Fail-safe design: auto-executes only low-risk refunds via Stripe",
@@ -48,7 +48,7 @@ export const PROJECTS: Project[] = [
     id: "prchangelog",
     title: "PRChangelog",
     blurb:
-      "AI-generated PR changelogs — connect your repo, get a polished changelog on every merge. Automates the part of shipping nobody wants to write.",
+      "AI-generated PR changelogs - connect your repo, get a polished changelog on every merge. Automates the part of shipping nobody wants to write.",
     points: [
       "Connects to GitHub repos via webhook or manual trigger",
       "Anthropic SDK generates structured, human-readable changelogs",
@@ -64,7 +64,7 @@ export const PROJECTS: Project[] = [
     id: "saascribe",
     title: "SaaScribe AI",
     blurb:
-      "Transform PDFs into intelligent conversations — upload documents, embed them, and chat with your content using AI-powered understanding.",
+      "Transform PDFs into intelligent conversations - upload documents, embed them, and chat with your content using AI-powered understanding.",
     points: [
       "PDF ingestion with text extraction and chunking",
       "LangChain + Pinecone for vector storage and similarity search",
@@ -80,7 +80,7 @@ export const PROJECTS: Project[] = [
     id: "callsage",
     title: "CallSage",
     blurb:
-      "AI-powered video conferencing with custom AI agents — real-time video, auth, async agent jobs, and database built end-to-end.",
+      "AI-powered video conferencing with custom AI agents - real-time video, auth, async agent jobs, and database built end-to-end.",
     points: [
       "Stream for high-quality, real-time video calls",
       "OpenAI for intelligent, context-aware meeting participation",
@@ -97,13 +97,13 @@ export const PROJECTS: Project[] = [
     id: "aicortex",
     title: "AICortex",
     blurb:
-      "Reduce LLM spend by 20–40% without degrading output quality — intelligent multi-provider model routing across Anthropic, OpenAI, and Mistral.",
+      "Reduce LLM spend by 20–40% without degrading output quality - intelligent multi-provider model routing across Anthropic, OpenAI, and Mistral.",
     points: [
       "Routes requests to the cheapest model capable of the task",
       "Supports Anthropic, OpenAI, and Mistral out of the box",
       "Stripe billing for usage-based pricing",
       "Real-time cost tracking and savings dashboard",
-      "Drop-in API — swap in AICortex without changing your prompts",
+      "Drop-in API - swap in AICortex without changing your prompts",
     ],
     tags: ["Next.js", "Anthropic SDK", "OpenAI", "Mistral", "Stripe", "TypeScript"],
     github: "https://github.com/abd-az1z/aicortex",
@@ -113,7 +113,7 @@ export const PROJECTS: Project[] = [
     id: "solvebot",
     title: "SolveBot",
     blurb:
-      "AI-powered customer support chatbot with WCAG accessibility built-in — GraphQL API layer, Postgres backend, persona-driven responses.",
+      "AI-powered customer support chatbot with WCAG accessibility built-in - GraphQL API layer, Postgres backend, persona-driven responses.",
     points: [
       "GPT-3.5 for real-time persona-driven responses",
       "GraphQL (Apollo) + PostgreSQL (Hasura) backend",

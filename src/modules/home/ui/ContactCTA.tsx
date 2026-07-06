@@ -27,7 +27,7 @@ const ContactCTA = () => {
               Looking for a full-time role at an AI startup or mid-stage SaaS
               company. If you&apos;re building something that ships to
               production and needs an engineer who cares about security and
-              reliability — let&apos;s talk.
+              reliability - let&apos;s talk.
             </p>
           </div>
 

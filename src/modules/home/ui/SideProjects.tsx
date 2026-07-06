@@ -18,7 +18,7 @@ const PROJECTS: SideProject[] = [
     variant: "ai",
     name: "AI Triage System",
     description:
-      "AI agent that triages inbound return/refund emails into tickets, cites store policy, and safely auto-executes low-risk Stripe refunds — escalating edge cases to CSRs.",
+      "AI agent that triages inbound return/refund emails into tickets, cites store policy, and safely auto-executes low-risk Stripe refunds - escalating edge cases to CSRs.",
     stack: ["Next.js", "Inngest", "Stripe", "Neon", "Drizzle", "Clerk"],
     github: "https://github.com/abd-az1z/ai-triage-system",
   },
@@ -37,7 +37,7 @@ const PROJECTS: SideProject[] = [
     variant: "neutral",
     name: "PRChangelog",
     description:
-      "AI-generated PR changelogs — connect your repo, get a polished changelog on every merge. Automates the part of shipping nobody wants to write.",
+      "AI-generated PR changelogs - connect your repo, get a polished changelog on every merge. Automates the part of shipping nobody wants to write.",
     stack: ["Next.js", "Anthropic SDK", "Firebase", "Stripe"],
     github: "https://github.com/abd-az1z/prchangelog",
     live: "https://prchangelog.vercel.app",
@@ -47,7 +47,7 @@ const PROJECTS: SideProject[] = [
     variant: "neutral",
     name: "SaaScribe AI",
     description:
-      "Transform PDFs into intelligent conversations — upload documents, embed them, and chat with your content using AI-powered understanding.",
+      "Transform PDFs into intelligent conversations - upload documents, embed them, and chat with your content using AI-powered understanding.",
     stack: ["Next.js", "LangChain", "Pinecone", "Clerk", "Neon", "Stripe"],
     github: "https://github.com/abd-az1z/SaaScribe.ai",
   },
@@ -56,7 +56,7 @@ const PROJECTS: SideProject[] = [
     variant: "architecture",
     name: "CallSage",
     description:
-      "AI-powered video conferencing with custom AI agents — real-time video, auth, async agent jobs, and database built end-to-end.",
+      "AI-powered video conferencing with custom AI agents - real-time video, auth, async agent jobs, and database built end-to-end.",
     stack: ["Next.js", "Stream", "OpenAI", "BetterAuth", "Inngest", "Neon", "Drizzle"],
     github: "https://github.com/abd-az1z/callsage.com",
     live: "https://callsage-com-8m9w.vercel.app",
@@ -66,7 +66,7 @@ const PROJECTS: SideProject[] = [
     variant: "migration",
     name: "AICortex",
     description:
-      "Reduce LLM spend by 20–40% without degrading output quality — multi-provider model routing across Anthropic, OpenAI, and Mistral.",
+      "Reduce LLM spend by 20–40% without degrading output quality - multi-provider model routing across Anthropic, OpenAI, and Mistral.",
     stack: ["Next.js", "Anthropic SDK", "OpenAI", "Mistral", "Stripe"],
     github: "https://github.com/abd-az1z/aicortex",
     live: "https://aicortex.vercel.app",

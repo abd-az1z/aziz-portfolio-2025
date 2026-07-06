@@ -35,7 +35,7 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* Dark only — no light theme, no toggle */
+/* Dark only - no light theme, no toggle */
 :root {
   --radius: 0.625rem;
   --background: #0a0a0f;

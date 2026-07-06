@@ -8,9 +8,9 @@ const HeroSection = () => {
       id="hero-section"
       className="relative mx-auto flex w-full max-w-7xl flex-col items-center gap-8 px-4 py-24 sm:px-6 md:py-32 lg:px-8"
     >
-      {/* Slot for Higgsfield background loop — <video muted autoPlay loop playsInline> goes here later */}
+      {/* Slot for Higgsfield background loop - <video muted autoPlay loop playsInline> goes here later */}
 
-      {/* Status badge — styled like a git tag */}
+      {/* Status badge - styled like a git tag */}
       <div className="flex items-center gap-2 rounded-md border border-tag-initiative/30 bg-tag-initiative/10 px-3 py-1.5">
         <span className="relative flex h-2 w-2">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-tag-initiative opacity-60" />

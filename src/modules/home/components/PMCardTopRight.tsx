@@ -65,7 +65,7 @@ export const PMCardTopRight = ({}: PMCardTopRightProps) => {
           {quotes.map((quote, index) => (
             <blockquote key={index} className="italic text-wrap text-zinc-300 border-l-2 border-pink-400 pl-4 py-2">
               &ldquo;{quote.text}&rdquo;
-              <footer className="mt-1 text-sm text-zinc-400">— {quote.author}</footer>
+              <footer className="mt-1 text-sm text-zinc-400">- {quote.author}</footer>
             </blockquote>
           ))}
         </TextLoop>

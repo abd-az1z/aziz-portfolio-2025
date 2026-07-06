@@ -5,6 +5,7 @@ import CaseStudies from "./ui/CaseStudies";
 import SideProjects from "./ui/SideProjects";
 import TechStack from "./ui/TechStack";
 import ContactCTA from "./ui/ContactCTA";
+import { FadeIn } from "@/components/ui/fade-in";
 
 const HomeView = () => {
   return (
@@ -12,11 +13,11 @@ const HomeView = () => {
       <main className="relative md:mt-16 mt-8 z-0">
         <HeroSection />
         <StatsBar />
-        <WorkExperience />
-        <CaseStudies />
-        <SideProjects />
-        <TechStack />
-        <ContactCTA />
+        <FadeIn><WorkExperience /></FadeIn>
+        <FadeIn delay={0.05}><CaseStudies /></FadeIn>
+        <FadeIn delay={0.05}><SideProjects /></FadeIn>
+        <FadeIn delay={0.05}><TechStack /></FadeIn>
+        <FadeIn delay={0.05}><ContactCTA /></FadeIn>
       </main>
     </div>
   );

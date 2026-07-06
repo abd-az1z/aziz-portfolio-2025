@@ -27,15 +27,15 @@ export default function KnowMoreContent() {
 
         <div className="mt-5 space-y-4 text-sm sm:text-[15px] leading-7 text-white/60">
           <p>
-            I’m Abdul Aziz — a full-stack developer and MSITM grad who builds
+            I’m Abdul Aziz - a full-stack developer and MSITM grad who builds
             production-ready, AI-powered web apps across React, Next.js, and
             Node.js with a focus on performance, security, and clean UX.
           </p>
           <p>
             When I’m not deep in code or refining AI-driven projects, I’m
             exploring fresh ideas and experimenting with emerging technologies.
-            Learning feels like play—testing new frameworks or ideating the next
-            SaaS—so I balance serious problem-solving with curiosity and
+            Learning feels like play-testing new frameworks or ideating the next
+            SaaS-so I balance serious problem-solving with curiosity and
             creativity.
           </p>
         </div>

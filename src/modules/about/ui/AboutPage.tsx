@@ -41,7 +41,7 @@ const TIMELINE: TimelineEvent[] = [
   {
     date: "Mar 2026",
     title: "Led 6-vendor CPaaS evaluation",
-    detail: "Twilio A2P 10DLC rejected twice — voice product blocked. Evaluated SignalWire, Telnyx, Plivo, Vonage, Bandwidth, AWS Connect. Recommended SignalWire. CEO funded same day.",
+    detail: "Twilio A2P 10DLC rejected twice - voice product blocked. Evaluated SignalWire, Telnyx, Plivo, Vonage, Bandwidth, AWS Connect. Recommended SignalWire. CEO funded same day.",
     tag: "INITIATIVE",
     variant: "initiative",
   },
@@ -62,7 +62,7 @@ const TIMELINE: TimelineEvent[] = [
   {
     date: "Jun 2026",
     title: "Phase 7 migration + POS integrations",
-    detail: "Second feature-slice migration (30+ files). Built POS integrations for Toast, Clover, OpenTable, Resy, SevenRooms — credential masking + test-connection patterns.",
+    detail: "Second feature-slice migration (30+ files). Built POS integrations for Toast, Clover, OpenTable, Resy, SevenRooms - credential masking + test-connection patterns.",
     tag: "INTEGRATION",
     variant: "neutral",
   },
@@ -94,7 +94,7 @@ const AboutPage = () => {
           The arc
         </h1>
         <p className="text-base text-muted-foreground md:text-lg">
-          I&apos;m Abdul Aziz — a software engineer who joined Agentnomics.ai
+          I&apos;m Abdul Aziz - a software engineer who joined Agentnomics.ai
           in November 2025 and immediately touched production. No sandbox
           ramp-up. What followed was 8 months of security fixes, architecture
           migrations, AI pipelines, vendor decisions, and client-facing
@@ -102,7 +102,7 @@ const AboutPage = () => {
         </p>
         <p className="text-base text-muted-foreground">
           I&apos;m targeting full-time roles at AI startups and mid-stage SaaS
-          companies. MSITM. Based in Seattle, WA.
+          companies. MS, ITM · Campbellsville. Based in Seattle, WA.
         </p>
       </div>
 
@@ -158,13 +158,39 @@ const AboutPage = () => {
           <h2 className="font-mono text-sm uppercase tracking-widest text-muted-foreground">
             Education
           </h2>
-          <div>
-            <p className="text-sm font-semibold text-foreground">
-              Master of Science, Information Technology Management
-            </p>
-            <p className="text-sm text-muted-foreground">
-              MSITM · In progress
-            </p>
+          <div className="space-y-4">
+            <div>
+              <p className="text-sm font-semibold text-foreground">
+                MS, Information Technology Management (STEM)
+              </p>
+              <p className="text-sm text-muted-foreground">
+                <a
+                  href="https://www.campbellsville.edu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors underline underline-offset-4"
+                >
+                  Campbellsville University
+                </a>
+                {" "}· May 2025
+              </p>
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-foreground">
+                BE, Electronics and Communication Engineering
+              </p>
+              <p className="text-sm text-muted-foreground">
+                <a
+                  href="https://deccancollege.ac.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors underline underline-offset-4"
+                >
+                  Deccan College
+                </a>
+                {" "}· July 2022
+              </p>
+            </div>
           </div>
         </div>
 
@@ -174,7 +200,7 @@ const AboutPage = () => {
           </h2>
           <p className="text-sm text-muted-foreground">
             Full-time software engineering roles at AI startups or mid-stage
-            SaaS companies — backend, full-stack, or AI infrastructure focus.
+            SaaS companies - backend, full-stack, or AI infrastructure focus.
             Remote or Seattle, WA.
           </p>
           <a
