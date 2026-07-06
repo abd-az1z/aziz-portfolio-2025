@@ -13,7 +13,7 @@ const PIPELINE = ["PDF ingestion", "chunk embedding", "similarity search", "grac
 
 const RagScene = () => {
   return (
-    <SceneSection id="scene-rag" kicker="Feb 2026 · Chapter 3">
+    <SceneSection id="scene-rag" video kicker="Feb 2026 · Chapter 3">
       <div className="space-y-8">
         <Tag variant="ai">AI/RAG</Tag>
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">

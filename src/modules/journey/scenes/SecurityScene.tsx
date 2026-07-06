@@ -15,7 +15,7 @@ const FINDINGS = [
 
 const SecurityScene = () => {
   return (
-    <SceneSection id="scene-security" kicker="Nov – Dec 2025 · Chapter 1">
+    <SceneSection id="scene-security" video kicker="Nov – Dec 2025 · Chapter 1">
       <div className="space-y-8">
         <Tag variant="security">SECURITY</Tag>
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">

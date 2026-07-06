@@ -13,7 +13,7 @@ const VENDORS = ["SignalWire", "Telnyx", "Plivo", "Vonage", "Bandwidth", "AWS Co
 
 const SignalScene = () => {
   return (
-    <SceneSection id="scene-signal" kicker="Mar 2026 · Chapter 4">
+    <SceneSection id="scene-signal" video kicker="Mar 2026 · Chapter 4">
       <div className="space-y-8">
         <Tag variant="initiative">BUSINESS IMPACT</Tag>
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">

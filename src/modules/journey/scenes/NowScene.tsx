@@ -9,7 +9,7 @@ import { Tag } from "@/components/ui/tag";
  */
 const NowScene = () => {
   return (
-    <SceneSection id="scene-now" kicker="Jul 2026 · Now">
+    <SceneSection id="scene-now" video kicker="Jul 2026 · Now">
       <div className="space-y-8">
         <Tag variant="ai">AI/RAG</Tag>
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">

@@ -12,7 +12,7 @@ import { Tag } from "@/components/ui/tag";
  */
 const MonolithScene = () => {
   return (
-    <SceneSection id="scene-monolith" kicker="Jan 2026 · Chapter 2">
+    <SceneSection id="scene-monolith" video kicker="Jan 2026 · Chapter 2">
       <div className="space-y-8">
         <Tag variant="architecture">ARCHITECTURE</Tag>
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
