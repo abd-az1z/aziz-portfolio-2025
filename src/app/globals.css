@@ -64,17 +64,6 @@
   --tag-initiative: #10b981;
 }
 
-/* Decorative canvases (Vanta rings, particles) must never intercept clicks */
-canvas {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
 html,
 body {
   margin: 0;

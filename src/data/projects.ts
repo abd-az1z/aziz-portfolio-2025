@@ -4,7 +4,6 @@ export type Project = {
   blurb: string;
   tags?: string[];
   points?: string[];
-  video?: string;
   link?: string;
   github?: string;
 };
@@ -42,7 +41,6 @@ export const PROJECTS: Project[] = [
     tags: ["Next.js", "OpenAI", "Anthropic SDK", "TypeScript"],
     github: "https://github.com/abd-az1z/promptshrink",
     link: "https://promptshrink.vercel.app",
-    video: "/videos/PromptShrink.mov",
   },
   {
     id: "prchangelog",
@@ -91,7 +89,6 @@ export const PROJECTS: Project[] = [
     tags: ["Next.js", "Stream", "OpenAI", "BetterAuth", "Inngest", "Neon", "Drizzle"],
     github: "https://github.com/abd-az1z/callsage.com",
     link: "https://callsage-com-8m9w.vercel.app",
-    video: "/videos/CallSage.MP4",
   },
   {
     id: "aicortex",
@@ -123,6 +120,5 @@ export const PROJECTS: Project[] = [
     ],
     tags: ["Next.js", "GraphQL", "Apollo", "OpenAI", "PostgreSQL", "Hasura", "Clerk"],
     github: "https://github.com/abd-az1z/SolveBot",
-    video: "/videos/solvebot.MP4",
   },
 ];
