@@ -1,7 +1,5 @@
-import HomeView from "@/modules/home/HomeView";
+import JourneyView from "@/modules/journey/JourneyView";
 
 export default function Home() {
-  return (
-    <HomeView />
-  );
+  return <JourneyView />;
 }
