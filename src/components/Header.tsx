@@ -41,12 +41,12 @@ const Header = () => {
             <Image src="/images/logo.png" alt="Logo" width={28} height={28} priority />
           </Link>
 
-          {/* Nav links — absolutely centered */}
+          {/* Nav links - absolutely centered */}
           <div className="absolute left-1/2 -translate-x-1/2 hidden md:block">
             <NavbarItems />
           </div>
 
-          {/* Get in Touch — right */}
+          {/* Get in Touch - right */}
           <a
             href="mailto:mohdabdulaziz2023@gmail.com"
             className="hidden md:inline-block px-4 py-1.5 text-sm font-medium rounded-full border border-white/10 hover:border-white/25 transition-colors"

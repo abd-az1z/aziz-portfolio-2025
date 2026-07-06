@@ -25,7 +25,7 @@ export const PROJECTS: Project[] = [
     ],
     tags: ["Next.js", "TypeScript", "Inngest", "Stripe", "Neon", "Drizzle", "Clerk"],
     github: "https://github.com/abd-az1z/ai-triage-system",
-    link: "https://github.com/abd-az1z/ai-triage-system",
+    link: "https://ai-triage-system-ashen.vercel.app",
   },
   {
     id: "promptshrink",
@@ -74,7 +74,7 @@ export const PROJECTS: Project[] = [
     ],
     tags: ["Next.js", "LangChain", "Pinecone", "Clerk", "Neon", "Stripe", "TypeScript"],
     github: "https://github.com/abd-az1z/SaaScribe.ai",
-    link: "https://github.com/abd-az1z/SaaScribe.ai",
+    link: "https://saascribeai.vercel.app",
   },
   {
     id: "callsage",
@@ -123,7 +123,6 @@ export const PROJECTS: Project[] = [
     ],
     tags: ["Next.js", "GraphQL", "Apollo", "OpenAI", "PostgreSQL", "Hasura", "Clerk"],
     github: "https://github.com/abd-az1z/SolveBot",
-    link: "https://github.com/abd-az1z/SolveBot",
     video: "/videos/solvebot.MP4",
   },
 ];

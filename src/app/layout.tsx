@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   title: "Abdul Aziz - AI Platform Engineer",
   description:
     "Software engineer building production AI platforms: RAG pipelines, backend architecture, and SaaS infrastructure that stays secure when it ships. 8 months at Agentnomics.ai, 50+ PRs merged to production.",
+  icons: {
+    icon: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
   openGraph: {
     title: "Abdul Aziz - AI Platform Engineer",
     description:

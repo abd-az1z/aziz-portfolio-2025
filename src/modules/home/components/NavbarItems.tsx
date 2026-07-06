@@ -6,10 +6,9 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
   { label: "Work", href: "/work" },
-  // { label: "Blog", href: "/blog" },
+  { label: "Projects", href: "/projects" },
+  { label: "About", href: "/about" },
 ];
 
 interface NavbarItemsProps {

@@ -1,85 +1,30 @@
-import { Tag } from "@/components/ui/tag";
-import type { TagVariant } from "@/components/ui/tag";
+const INTERESTS = [
+  { emoji: "🏋️", label: "Workouts & Health" },
+  { emoji: "🌍", label: "Travel & Hiking" },
+  { emoji: "🚀", label: "Space & Astronomy" },
+  { emoji: "🏎️", label: "Cars" },
+  { emoji: "🎬", label: "Sci-Fi Movies" },
+  { emoji: "🏏", label: "Cricket" },
+  { emoji: "⌚", label: "Watches" },
+  { emoji: "🔌", label: "Gadgets & Electronics" },
+  { emoji: "🧠", label: "Thought & Mindset" },
+  { emoji: "🥗", label: "Diet & Nutrition" },
+];
 
-interface TimelineEvent {
-  date: string;
-  title: string;
-  detail: string;
-  tag?: string;
-  variant?: TagVariant;
-}
-
-const TIMELINE: TimelineEvent[] = [
-  {
-    date: "Nov 2025",
-    title: "Joined Agentnomics.ai as Software Engineer",
-    detail: "First week: found hardcoded API keys in deploy.sh. Fixed immediately. No ramp-up.",
-    tag: "SECURITY",
-    variant: "security",
-  },
-  {
-    date: "Dec 2025",
-    title: "Caught two more critical vulnerabilities",
-    detail: "Auth bypass on Salesforce routes + plaintext credential exposure in connections API GET response.",
-    tag: "SECURITY",
-    variant: "security",
-  },
-  {
-    date: "Jan 2026",
-    title: "Flask monolith decomposition",
-    detail: "6,200-line server.py → 16 blueprints, 109-line entry point. Fixed relative imports across 11 files. Zero logic changes, zero regressions.",
-    tag: "ARCHITECTURE",
-    variant: "architecture",
-  },
-  {
-    date: "Feb 2026",
-    title: "Built pgvector RAG pipeline from scratch",
-    detail: "PDF ingestion → chunk embedding → similarity search (12 chunks, 0.25 threshold) → graceful fallback to raw_text. Deployed before live client visit.",
-    tag: "AI/RAG",
-    variant: "ai",
-  },
-  {
-    date: "Mar 2026",
-    title: "Led 6-vendor CPaaS evaluation",
-    detail: "Twilio A2P 10DLC rejected twice - voice product blocked. Evaluated SignalWire, Telnyx, Plivo, Vonage, Bandwidth, AWS Connect. Recommended SignalWire. CEO funded same day.",
-    tag: "INITIATIVE",
-    variant: "initiative",
-  },
-  {
-    date: "Apr 2026",
-    title: "Phase 5 frontend migration",
-    detail: "Feature-slice architecture migration. 30+ files moved, zero logic changes, zero regressions. Parallel dev across the team unblocked.",
-    tag: "MIGRATION",
-    variant: "migration",
-  },
-  {
-    date: "May 2026",
-    title: "Stripe billing end-to-end",
-    detail: "12 products across 4 categories, webhooks, checkout → trial activation confirmed e2e. Trial-gating access control with fail-closed design.",
-    tag: "BILLING",
-    variant: "neutral",
-  },
-  {
-    date: "Jun 2026",
-    title: "Phase 7 migration + POS integrations",
-    detail: "Second feature-slice migration (30+ files). Built POS integrations for Toast, Clover, OpenTable, Resy, SevenRooms - credential masking + test-connection patterns.",
-    tag: "INTEGRATION",
-    variant: "neutral",
-  },
-  {
-    date: "Jun 2026",
-    title: "10-gap client readiness audit (self-initiated)",
-    detail: "Before live Cafe Bollywood customer visit, identified and fixed 10 production gaps in a single branch. No one asked. Just shipped.",
-    tag: "INITIATIVE",
-    variant: "initiative",
-  },
-  {
-    date: "Jul 2026",
-    title: "Voice bot, LangGraph, LiteLLM contributions",
-    detail: "Mid-call human handoff detection, phone skill schema, multi-agent workflow contributions. 50+ PRs total. Still shipping.",
-    tag: "AI/RAG",
-    variant: "ai",
-  },
+const BUCKET_LIST: { label: string; done: boolean }[] = [
+  { label: "Skydiving", done: true },
+  { label: "Bungee jumping", done: false },
+  { label: "Scuba diving", done: false },
+  { label: "Paragliding", done: false },
+  { label: "Skiing", done: false },
+  { label: "Boating", done: false },
+  { label: "Buy my dream watch", done: false },
+  { label: "Hike Mount Rainier", done: false },
+  { label: "3-day camping trip", done: false },
+  { label: "Visit Tokyo, Japan", done: false },
+  { label: "Desert riding", done: false },
+  { label: "Solo road trip", done: false },
+  { label: "See the Northern Lights", done: true },
 ];
 
 const AboutPage = () => {
@@ -91,106 +36,126 @@ const AboutPage = () => {
           About
         </p>
         <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-          The arc
+          Beyond the code
         </h1>
         <p className="text-base text-muted-foreground md:text-lg">
-          I&apos;m Abdul Aziz - a software engineer who joined Agentnomics.ai
-          in November 2025 and immediately touched production. No sandbox
-          ramp-up. What followed was 8 months of security fixes, architecture
-          migrations, AI pipelines, vendor decisions, and client-facing
-          launches.
-        </p>
-        <p className="text-base text-muted-foreground">
-          I&apos;m targeting full-time roles at AI startups and mid-stage SaaS
-          companies. MS, ITM · Campbellsville. Based in Seattle, WA.
+          I&apos;m Abdul Aziz - a software engineer based in Seattle, WA. I
+          joined Agentnomics.ai in November 2025 and have been shipping
+          production AI systems ever since. But there&apos;s more to the story
+          than the commits.
         </p>
       </div>
 
-      {/* Timeline */}
-      <div className="mb-20">
-        <h2 className="mb-10 font-mono text-sm uppercase tracking-widest text-muted-foreground">
-          Agentnomics.ai · Nov 2025 – Present
-        </h2>
+      {/* How I learn */}
+      <div className="mb-16 rounded-xl border border-border bg-surface p-6 md:p-8">
+        <p className="font-mono text-sm uppercase tracking-widest text-muted-foreground mb-4">
+          How I learn
+        </p>
+        <p className="text-base text-foreground leading-relaxed max-w-2xl">
+          I don&apos;t take courses to learn a skill. I pick the skill and build
+          something real with it. Every project in my portfolio started as a
+          question I needed to answer - not a tutorial I followed. That&apos;s
+          the only way I know how to retain anything.
+        </p>
+      </div>
 
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-0 top-0 h-full w-px bg-border md:left-[140px]" />
-
-          <div className="space-y-0">
-            {TIMELINE.map(({ date, title, detail, tag, variant }, i) => (
-              <div
-                key={i}
-                className="relative flex flex-col gap-2 pb-10 pl-6 md:flex-row md:gap-10 md:pl-0"
-              >
-                {/* Date */}
-                <div className="shrink-0 md:w-[140px] md:text-right">
-                  <span className="font-mono text-xs text-muted-foreground">
-                    {date}
-                  </span>
-                </div>
-
-                {/* Dot */}
-                <div className="absolute left-[-4px] top-[2px] h-2 w-2 rounded-full border border-border bg-background md:left-[136px]" />
-
-                {/* Content */}
-                <div className="flex-1 space-y-2 md:pl-10">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <h3 className="text-sm font-semibold text-foreground">
-                      {title}
-                    </h3>
-                    {tag && variant && (
-                      <Tag variant={variant}>{tag}</Tag>
-                    )}
-                  </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {detail}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* Interests */}
+      <div className="mb-16">
+        <p className="font-mono text-sm uppercase tracking-widest text-muted-foreground mb-6">
+          Outside the terminal
+        </p>
+        <div className="flex flex-wrap gap-3">
+          {INTERESTS.map(({ emoji, label }) => (
+            <span
+              key={label}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm text-foreground"
+            >
+              <span>{emoji}</span>
+              <span>{label}</span>
+            </span>
+          ))}
         </div>
+        <p className="mt-4 text-sm text-muted-foreground max-w-xl">
+          Particularly obsessed with space - Mars colonisation, the solar system, and
+          anything Elon or NASA puts up. I collect watches and gadgets the same
+          way I collect side projects: always one more.
+        </p>
       </div>
 
-      {/* Side projects & education row */}
+      {/* Bucket list */}
+      <div className="mb-16">
+        <p className="font-mono text-sm uppercase tracking-widest text-muted-foreground mb-6">
+          Bucket list
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+          {BUCKET_LIST.map(({ label, done }) => (
+            <div
+              key={label}
+              className="flex items-center gap-3 rounded-lg border border-border bg-surface px-4 py-3"
+            >
+              <span
+                className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border text-xs ${
+                  done
+                    ? "border-green-500 bg-green-500/10 text-green-400"
+                    : "border-white/20 text-transparent"
+                }`}
+              >
+                ✓
+              </span>
+              <span
+                className={`text-sm ${
+                  done
+                    ? "line-through text-muted-foreground"
+                    : "text-foreground"
+                }`}
+              >
+                {label}
+              </span>
+            </div>
+          ))}
+        </div>
+        <p className="mt-4 text-xs text-muted-foreground">
+          Always adding more. Always finding time.
+        </p>
+      </div>
+
+      {/* Education + Currently looking for */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <div className="rounded-xl border border-border bg-surface p-6 space-y-3">
+        <div className="rounded-xl border border-border bg-surface p-6 space-y-4">
           <h2 className="font-mono text-sm uppercase tracking-widest text-muted-foreground">
             Education
           </h2>
-          <div className="space-y-4">
-            <div>
-              <p className="text-sm font-semibold text-foreground">
-                MS, Information Technology Management (STEM)
-              </p>
-              <p className="text-sm text-muted-foreground">
-                <a
-                  href="https://www.campbellsville.edu/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-foreground transition-colors underline underline-offset-4"
-                >
-                  Campbellsville University
-                </a>
-                {" "}· May 2025
-              </p>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-foreground">
-                BE, Electronics and Communication Engineering
-              </p>
-              <p className="text-sm text-muted-foreground">
-                <a
-                  href="https://deccancollege.ac.in/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-foreground transition-colors underline underline-offset-4"
-                >
-                  Deccan College
-                </a>
-                {" "}· July 2022
-              </p>
-            </div>
+          <div>
+            <p className="text-sm font-semibold text-foreground">
+              MS, Information Technology Management (STEM)
+            </p>
+            <p className="text-sm text-muted-foreground">
+              <a
+                href="https://www.campbellsville.edu/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground transition-colors underline underline-offset-4"
+              >
+                Campbellsville University
+              </a>
+              {" "}· May 2025
+            </p>
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-foreground">
+              BE, Electronics and Communication Engineering
+            </p>
+            <p className="text-sm text-muted-foreground">
+              <a
+                href="https://deccancollege.ac.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground transition-colors underline underline-offset-4"
+              >
+                Deccan College
+              </a>
+              {" "}· July 2022
+            </p>
           </div>
         </div>
 
