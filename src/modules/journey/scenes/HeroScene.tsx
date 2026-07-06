@@ -1,25 +1,58 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { LuLinkedin } from "react-icons/lu";
+import { prefersReducedMotion } from "../lib/scroll";
+
+// The only WebGL on the site — client-only, code-split away from every
+// other route. Mobile and reduced-motion never even download this chunk.
+const Constellation = dynamic(() => import("../components/Constellation"), {
+  ssr: false,
+});
 
 /**
  * Scene 1 — the system.
- * Phase 3 replaces the placeholder backdrop with the lazy-loaded WebGL
- * constellation (desktop) / static hero image (mobile, reduced-motion).
+ * Desktop + motion OK: living constellation (R3F), unmounted when the
+ * hero scrolls out of view so it costs nothing below the fold.
+ * Mobile / reduced-motion: static radial glow fallback.
  */
 const HeroScene = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [webglOk, setWebglOk] = useState(false);
+  const [inView, setInView] = useState(true);
+
+  useEffect(() => {
+    // Gate: desktop pointer + motion allowed (post-mount, no hydration mismatch)
+    const desktop = window.matchMedia("(pointer: fine) and (min-width: 768px)").matches;
+    setWebglOk(desktop && !prefersReducedMotion());
+
+    const el = sectionRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
+      rootMargin: "100px",
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="scene-hero"
       className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8"
     >
-      {/* Placeholder backdrop — Constellation (R3F) mounts here in Phase 3 */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.06),transparent_60%)]"
-      />
+      {/* Backdrop: constellation on capable desktops, static glow otherwise */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.06),transparent_60%)]" />
+        {webglOk && inView && (
+          <div className="absolute inset-0 [&_canvas]:!pointer-events-none">
+            <Constellation />
+          </div>
+        )}
+      </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center gap-8 text-center">
         {/* Status badge — git-tag treatment (v1 rule) */}

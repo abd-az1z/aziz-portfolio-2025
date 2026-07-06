@@ -1,13 +1,11 @@
 "use client";
 
-import { useRef, type ReactNode, type ElementType } from "react";
+import { useRef, type ReactNode } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "../lib/scroll";
 
 interface MaskRevealProps {
   children: ReactNode;
-  /** Wrapper element, default div */
-  as?: ElementType;
   /** Seconds, staggering siblings within a scene */
   delay?: number;
   className?: string;
@@ -18,8 +16,8 @@ interface MaskRevealProps {
  * translateY + clip-path — not plain opacity. Instant under
  * prefers-reduced-motion via gsap.matchMedia.
  */
-const MaskReveal = ({ children, as: Tag = "div", delay = 0, className = "" }: MaskRevealProps) => {
-  const ref = useRef<HTMLElement>(null);
+const MaskReveal = ({ children, delay = 0, className = "" }: MaskRevealProps) => {
+  const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -48,9 +46,9 @@ const MaskReveal = ({ children, as: Tag = "div", delay = 0, className = "" }: Ma
   );
 
   return (
-    <Tag ref={ref} className={`overflow-hidden ${className}`}>
+    <div ref={ref} className={`overflow-hidden ${className}`}>
       <div data-mask-inner>{children}</div>
-    </Tag>
+    </div>
   );
 };
 
