@@ -1,14 +1,29 @@
-const INTERESTS = [
-  { emoji: "🏋️", label: "Workouts & Health" },
-  { emoji: "🌍", label: "Travel & Hiking" },
-  { emoji: "🚀", label: "Space & Astronomy" },
-  { emoji: "🏎️", label: "Cars" },
-  { emoji: "🎬", label: "Sci-Fi Movies" },
-  { emoji: "🏏", label: "Cricket" },
-  { emoji: "⌚", label: "Watches" },
-  { emoji: "🔌", label: "Gadgets & Electronics" },
-  { emoji: "🧠", label: "Thought & Mindset" },
-  { emoji: "🥗", label: "Diet & Nutrition" },
+import {
+  Dumbbell,
+  Mountain,
+  Rocket,
+  Car,
+  Clapperboard,
+  Trophy,
+  Watch,
+  Cpu,
+  Brain,
+  Salad,
+  Check,
+  type LucideIcon,
+} from "lucide-react";
+
+const INTERESTS: { icon: LucideIcon; label: string }[] = [
+  { icon: Dumbbell, label: "Workouts & Health" },
+  { icon: Mountain, label: "Travel & Hiking" },
+  { icon: Rocket, label: "Space & Astronomy" },
+  { icon: Car, label: "Cars" },
+  { icon: Clapperboard, label: "Sci-Fi Movies" },
+  { icon: Trophy, label: "Cricket" },
+  { icon: Watch, label: "Watches" },
+  { icon: Cpu, label: "Gadgets & Electronics" },
+  { icon: Brain, label: "Thought & Mindset" },
+  { icon: Salad, label: "Diet & Nutrition" },
 ];
 
 const BUCKET_LIST: { label: string; done: boolean }[] = [
@@ -65,12 +80,12 @@ const AboutPage = () => {
           Outside the terminal
         </p>
         <div className="flex flex-wrap gap-3">
-          {INTERESTS.map(({ emoji, label }) => (
+          {INTERESTS.map(({ icon: Icon, label }) => (
             <span
               key={label}
               className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm text-foreground"
             >
-              <span>{emoji}</span>
+              <Icon className="h-4 w-4 text-muted-foreground" />
               <span>{label}</span>
             </span>
           ))}
@@ -94,13 +109,13 @@ const AboutPage = () => {
               className="flex items-center gap-3 rounded-lg border border-border bg-surface px-4 py-3"
             >
               <span
-                className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border text-xs ${
+                className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border ${
                   done
                     ? "border-green-500 bg-green-500/10 text-green-400"
                     : "border-white/20 text-transparent"
                 }`}
               >
-                ✓
+                <Check className="h-3 w-3" strokeWidth={3} />
               </span>
               <span
                 className={`text-sm ${
