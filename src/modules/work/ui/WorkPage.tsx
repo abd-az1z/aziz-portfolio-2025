@@ -1,3 +1,9 @@
+"use client";
+
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "@/modules/journey/lib/scroll";
+import MaskReveal from "@/modules/journey/components/MaskReveal";
 import { Tag, type TagVariant } from "@/components/ui/tag";
 
 interface TimelineEvent {
@@ -7,6 +13,16 @@ interface TimelineEvent {
   tag?: string;
   variant?: TagVariant;
 }
+
+// Timeline node classes per tag variant (matches the tag color system)
+const NODE_CLASS: Record<string, string> = {
+  security: "bg-tag-security shadow-[0_0_8px_#ef4444]",
+  architecture: "bg-tag-architecture shadow-[0_0_8px_#3b82f6]",
+  ai: "bg-tag-ai shadow-[0_0_8px_#8b5cf6]",
+  migration: "bg-tag-migration shadow-[0_0_8px_#f59e0b]",
+  initiative: "bg-tag-initiative shadow-[0_0_8px_#10b981]",
+  neutral: "bg-white/50",
+};
 
 const AGENTNOMICS: TimelineEvent[] = [
   {
@@ -87,11 +103,19 @@ function Timeline({ events }: { events: TimelineEvent[] }) {
       <div className="absolute left-0 top-0 h-full w-px bg-border md:left-[140px]" />
       <div className="space-y-0">
         {events.map(({ date, title, detail, tag, variant }, i) => (
-          <div key={i} className="relative flex flex-col gap-2 pb-10 pl-6 md:flex-row md:gap-10 md:pl-0">
+          <div
+            key={i}
+            data-timeline-item
+            className="relative flex flex-col gap-2 pb-10 pl-6 md:flex-row md:gap-10 md:pl-0"
+          >
             <div className="shrink-0 md:w-[140px] md:text-right">
               <span className="font-mono text-xs text-muted-foreground">{date}</span>
             </div>
-            <div className="absolute left-[-4px] top-[2px] h-2 w-2 rounded-full border border-border bg-background md:left-[136px]" />
+            <div
+              className={`absolute left-[-4px] top-[2px] h-2 w-2 rounded-full md:left-[136px] ${
+                variant ? NODE_CLASS[variant] : "bg-white/30"
+              }`}
+            />
             <div className="flex-1 space-y-2 md:pl-10">
               <div className="flex flex-wrap items-center gap-3">
                 <h3 className="text-sm font-semibold text-foreground">{title}</h3>
@@ -107,16 +131,57 @@ function Timeline({ events }: { events: TimelineEvent[] }) {
 }
 
 export default function WorkPage() {
+  const root = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.from("[data-timeline-item]", {
+          opacity: 0,
+          x: -20,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: "[data-timeline-item]",
+            start: "top 75%",
+            once: true,
+          },
+        });
+        gsap.from("[data-accenture]", {
+          opacity: 0,
+          y: 24,
+          duration: 0.7,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: "[data-accenture]",
+            start: "top 80%",
+            once: true,
+          },
+        });
+      });
+      return () => mm.revert();
+    },
+    { scope: root }
+  );
+
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+    <div ref={root} className="mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="mb-16 max-w-2xl space-y-4">
-        <p className="font-mono text-sm uppercase tracking-widest text-muted-foreground">Experience</p>
-        <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-          Where I&apos;ve worked
-        </h1>
+        <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          Experience · The deployment log
+        </p>
+        <MaskReveal>
+          <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+            Where I&apos;ve worked
+          </h1>
+        </MaskReveal>
         <p className="text-base text-muted-foreground md:text-lg">
-          8 months at Agentnomics.ai shipping production AI - security fixes, architecture migrations, RAG pipelines, vendor decisions, and client launches.
+          8 months at Agentnomics.ai shipping production AI - security fixes,
+          architecture migrations, RAG pipelines, vendor decisions, and client
+          launches.
         </p>
       </div>
 
@@ -124,18 +189,22 @@ export default function WorkPage() {
       <div className="mb-20">
         <div className="mb-10 flex flex-wrap items-baseline gap-4">
           <h2 className="text-xl font-bold text-foreground">Agentnomics.ai</h2>
-          <span className="font-mono text-sm text-muted-foreground">Software Engineer · Nov 2025 – Present · Remote</span>
+          <span className="font-mono text-sm text-muted-foreground">
+            Software Engineer · Nov 2025 – Present · Remote
+          </span>
         </div>
         <Timeline events={AGENTNOMICS} />
       </div>
 
       {/* Accenture */}
-      <div>
+      <div data-accenture>
         <div className="mb-8 flex flex-wrap items-baseline gap-4">
           <h2 className="text-xl font-bold text-foreground">Accenture</h2>
-          <span className="font-mono text-sm text-muted-foreground">Software Engineer, SAP S/4HANA · Feb 2021 – Sep 2022 · Hyderabad, India</span>
+          <span className="font-mono text-sm text-muted-foreground">
+            Software Engineer, SAP S/4HANA · Feb 2021 – Sep 2022 · Hyderabad, India
+          </span>
         </div>
-        <ul className="space-y-3 max-w-2xl">
+        <ul className="max-w-2xl space-y-3">
           {[
             "Built and supported enterprise software workflows across order management, pricing, delivery, invoicing, and production support.",
             "Translated business requirements into system configurations, process flows, test cases, and production-ready improvements.",

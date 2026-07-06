@@ -1,8 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { LuGithub } from "react-icons/lu";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "@/modules/journey/lib/scroll";
+import MaskReveal from "@/modules/journey/components/MaskReveal";
 import { Tag, type TagVariant } from "@/components/ui/tag";
 import { PROJECTS, type Project } from "@/data/projects";
 
@@ -40,7 +43,10 @@ function ProjectCard({ project }: { project: Project }) {
   const { label, variant } = TAG_MAP[project.id] ?? { label: "PROJECT", variant: "neutral" as TagVariant };
 
   return (
-    <div className="flex flex-col gap-4 rounded-xl border border-border bg-surface p-6 transition-colors hover:border-white/15">
+    <div
+      data-project-card
+      className="flex flex-col gap-4 rounded-xl border border-border bg-surface p-6 transition-colors hover:border-white/15"
+    >
       <div className="flex items-start justify-between gap-4">
         <h3 className="text-lg font-semibold text-foreground">{project.title}</h3>
         <Tag variant={variant}>{label}</Tag>
@@ -76,19 +82,41 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export default function ProjectsPage() {
+  const root = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState<Filter>("all");
 
   const filtered = active === "all"
     ? PROJECTS
     : PROJECTS.filter((p) => PROJECT_FILTERS[p.id]?.includes(active));
 
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.from("[data-project-card]", {
+          opacity: 0,
+          y: 24,
+          duration: 0.6,
+          stagger: 0.07,
+          ease: "power3.out",
+        });
+      });
+      return () => mm.revert();
+    },
+    { scope: root }
+  );
+
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+    <div ref={root} className="mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
       <div className="mb-12 space-y-3">
-        <p className="font-mono text-sm uppercase tracking-widest text-muted-foreground">Projects</p>
-        <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-          Things I&apos;ve built
-        </h1>
+        <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          Projects · The lab
+        </p>
+        <MaskReveal>
+          <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+            Things I&apos;ve built
+          </h1>
+        </MaskReveal>
         <p className="max-w-xl text-base text-muted-foreground">
           Side projects and production work - AI agents, SaaS tools, and infrastructure built end-to-end.
         </p>
@@ -97,7 +125,7 @@ export default function ProjectsPage() {
       <div className="mb-10 flex flex-wrap gap-2">
         {FILTERS.map(({ id, label }) => (
           <button key={id} type="button" onClick={() => setActive(id)}
-            className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+            className={`rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-wider transition-colors ${
               active === id
                 ? "bg-white text-black"
                 : "border border-border text-muted-foreground hover:border-white/20 hover:text-foreground"
