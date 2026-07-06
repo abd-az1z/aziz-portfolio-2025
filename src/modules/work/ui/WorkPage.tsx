@@ -40,7 +40,7 @@ const AGENTNOMICS: TimelineEvent[] = [
   {
     date: "Mar 2026",
     title: "Led 6-vendor CPaaS evaluation",
-    detail: "Twilio A2P 10DLC rejected twice — voice product blocked. Evaluated SignalWire, Telnyx, Plivo, Vonage, Bandwidth, AWS Connect. Recommended SignalWire. CEO funded same day.",
+    detail: "Twilio A2P 10DLC rejected twice - voice product blocked. Evaluated SignalWire, Telnyx, Plivo, Vonage, Bandwidth, AWS Connect. Recommended SignalWire. CEO funded same day.",
     tag: "INITIATIVE",
     variant: "initiative",
   },
@@ -61,7 +61,7 @@ const AGENTNOMICS: TimelineEvent[] = [
   {
     date: "Jun 2026",
     title: "POS integrations + second migration",
-    detail: "30+ files migrated. Built POS integrations for Toast, Clover, OpenTable, Resy, SevenRooms — credential masking + test-connection patterns.",
+    detail: "30+ files migrated. Built POS integrations for Toast, Clover, OpenTable, Resy, SevenRooms - credential masking + test-connection patterns.",
     tag: "INTEGRATION",
     variant: "neutral",
   },
@@ -116,7 +116,7 @@ export default function WorkPage() {
           Where I&apos;ve worked
         </h1>
         <p className="text-base text-muted-foreground md:text-lg">
-          8 months at Agentnomics.ai shipping production AI — security fixes, architecture migrations, RAG pipelines, vendor decisions, and client launches.
+          8 months at Agentnomics.ai shipping production AI - security fixes, architecture migrations, RAG pipelines, vendor decisions, and client launches.
         </p>
       </div>
 

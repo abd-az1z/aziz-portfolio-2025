@@ -90,7 +90,7 @@ export default function ProjectsPage() {
           Things I&apos;ve built
         </h1>
         <p className="max-w-xl text-base text-muted-foreground">
-          Side projects and production work — AI agents, SaaS tools, and infrastructure built end-to-end.
+          Side projects and production work - AI agents, SaaS tools, and infrastructure built end-to-end.
         </p>
       </div>
 
