@@ -1,14 +1,11 @@
-import ConceptCreation from "./ui/ConceptCreation"
-import KnowAboutMe from "./ui/KnowAboutMe"
+import AboutPage from "./ui/AboutPage";
 
 const AboutView = () => {
   return (
-    <div className="relative w-full bg-background">
-      <main className="relative">
-        <KnowAboutMe />
-        <ConceptCreation />
-      </main>
+    <div className="relative w-full bg-background md:mt-16 mt-8">
+      <AboutPage />
     </div>
-  )
-}
-export default AboutView
+  );
+};
+
+export default AboutView;
