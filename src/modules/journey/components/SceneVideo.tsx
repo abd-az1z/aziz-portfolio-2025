@@ -127,6 +127,11 @@ const SceneVideo = ({ id }: SceneVideoProps) => {
         className="absolute inset-0 opacity-[0.03] mix-blend-overlay"
         style={{ backgroundImage: GRAIN_URI }}
       />
+
+      {/* Edge feather - the scene's first and last pixels are exactly the
+          page background, so adjacent sections dissolve into each other and
+          the page reads as one continuous surface (no seam lines). */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#0A0A0F_0%,transparent_25%,transparent_75%,#0A0A0F_100%)]" />
     </div>
   );
 };
