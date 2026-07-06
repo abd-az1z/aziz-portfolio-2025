@@ -80,7 +80,7 @@ const SceneVideo = ({ id }: SceneVideoProps) => {
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
       {mode === "video" && (
         <video
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover brightness-[0.55]"
           muted
           autoPlay
           loop
@@ -99,7 +99,7 @@ const SceneVideo = ({ id }: SceneVideoProps) => {
         <img
           src={poster}
           alt=""
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover brightness-[0.55]"
           onError={() => setMode("glow")}
         />
       )}
@@ -113,12 +113,13 @@ const SceneVideo = ({ id }: SceneVideoProps) => {
         />
       )}
 
-      {/* Vignette - blends every backdrop into #0A0A0F, guarantees contrast */}
+      {/* Vignette - blends every backdrop into #0A0A0F and darkens the
+          content area so text stays readable over any footage */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 60% at 50% 50%, transparent 30%, #0A0A0F 100%)",
+            "radial-gradient(ellipse 75% 65% at 50% 50%, rgba(10,10,15,0.55) 0%, #0A0A0F 100%)",
         }}
       />
 

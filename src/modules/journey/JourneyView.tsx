@@ -10,8 +10,7 @@ import SignalScene from "./scenes/SignalScene";
 import ShipScene from "./scenes/ShipScene";
 import NowScene from "./scenes/NowScene";
 
-// Scenes 8–10 reuse the existing v1 sections (per Master_PRP §4)
-import StatsBar from "@/modules/home/ui/StatsBar";
+// Closing sections reuse the existing v1 components (per Master_PRP §4)
 import SideProjects from "@/modules/home/ui/SideProjects";
 import ContactCTA from "@/modules/home/ui/ContactCTA";
 import { FadeIn } from "@/components/ui/fade-in";
@@ -40,10 +39,7 @@ const JourneyView = () => {
         <ShipScene />
         <NowScene />
 
-        {/* 8 - proof */}
-        <StatsBar />
-
-        {/* 9 - side projects */}
+        {/* 8 - side projects (stats live inside the scenes themselves) */}
         <FadeIn>
           <SideProjects />
         </FadeIn>
