@@ -1,14 +1,18 @@
 import { ArrowRight } from "lucide-react";
 import { LuLinkedin, LuGithub } from "react-icons/lu";
 import { RiTwitterXLine } from "react-icons/ri";
+import PebbleField from "@/modules/journey/components/PebbleField";
 
 const ContactCTA = () => {
   return (
     <section className="relative mx-auto flex min-h-[80vh] w-full max-w-7xl flex-col justify-center px-4 py-24 sm:px-6 lg:px-8">
-      <p className="mb-10 text-center font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
+      {/* Pebble finale - the system comes to rest, but still reacts to you */}
+      <PebbleField />
+
+      <p className="relative z-10 mb-10 text-center font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
         The next chapter
       </p>
-      <div>
+      <div className="relative z-10">
         <div className="mx-auto max-w-2xl space-y-8 text-center">
           {/* Status */}
           <div className="inline-flex items-center gap-2 rounded-md border border-tag-initiative/30 bg-tag-initiative/10 px-3 py-1.5">
