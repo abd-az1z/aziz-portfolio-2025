@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
-import { LuLinkedin, LuGithub } from "react-icons/lu";
-import { RiTwitterXLine } from "react-icons/ri";
+import { LuLinkedin } from "react-icons/lu";
 import PebbleField from "@/modules/journey/components/PebbleField";
+import { SOCIALS } from "@/components/Footer";
 
 const ContactCTA = () => {
   return (
@@ -58,6 +58,30 @@ const ContactCTA = () => {
                 LinkedIn
               </a>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Finale footer - the regular footer's contents live here on the
+          homepage, resting on the pebble floor */}
+      <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-6 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
+          <p className="font-mono text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Abdul Aziz Mohammed
+          </p>
+          <div className="flex gap-2">
+            {SOCIALS.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
           </div>
         </div>
       </div>
