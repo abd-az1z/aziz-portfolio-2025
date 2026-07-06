@@ -1,12 +1,17 @@
 "use client";
 
-import SceneSection from "../components/SceneSection";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "../lib/scroll";
+import SceneVideo from "../components/SceneVideo";
+import MaskReveal from "../components/MaskReveal";
 import { Tag, type TagVariant } from "@/components/ui/tag";
 
 /**
  * Scene 6 — scale & ship.
- * Phase 5 turns this into a pinned horizontal milestone strip over the
- * ambient `scene-ship` clip. Skeleton renders the same content vertically.
+ * Desktop: the section pins and the milestone strip scrolls horizontally,
+ * scrubbed — a deploy pipeline moving left to right. Mobile and
+ * reduced-motion: vertical stack, no pin.
  */
 interface Milestone {
   date: string;
@@ -48,19 +53,87 @@ const MILESTONES: Milestone[] = [
 ];
 
 const ShipScene = () => {
-  return (
-    <SceneSection id="scene-ship" video kicker="Apr – Jun 2026 · Chapter 5">
-      <div className="space-y-10">
-        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-          Then it was time to scale{" "}
-          <span className="text-muted-foreground">— and keep shipping.</span>
-        </h2>
+  const sectionRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2" data-milestone-track>
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+
+      // Desktop with motion: pin + horizontal scrub
+      mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
+        const track = trackRef.current;
+        const section = sectionRef.current;
+        if (!track || !section) return;
+
+        const distance = () => track.scrollWidth - window.innerWidth * 0.6;
+
+        gsap.to(track, {
+          x: () => -distance(),
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => `+=${distance()}`,
+            pin: true,
+            scrub: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+      });
+
+      // Mobile with motion: simple stagger entry, no pin
+      mm.add("(max-width: 767px) and (prefers-reduced-motion: no-preference)", () => {
+        gsap.from("[data-milestone]", {
+          opacity: 0,
+          y: 30,
+          duration: 0.6,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 70%",
+            once: true,
+          },
+        });
+      });
+
+      return () => mm.revert();
+    },
+    { scope: sectionRef }
+  );
+
+  return (
+    <section
+      ref={sectionRef}
+      id="scene-ship"
+      className="relative flex min-h-screen w-full flex-col justify-center overflow-hidden py-24"
+    >
+      <SceneVideo id="scene-ship" />
+
+      <div className="relative z-10 mx-auto mb-12 w-full max-w-4xl px-4 sm:px-6 lg:px-8">
+        <p className="mb-6 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          Apr – Jun 2026 · Chapter 5
+        </p>
+        <MaskReveal>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+            Then it was time to scale{" "}
+            <span className="text-muted-foreground">— and keep shipping.</span>
+          </h2>
+        </MaskReveal>
+      </div>
+
+      {/* Milestone strip — horizontal scrub on desktop, stack on mobile */}
+      <div className="relative z-10 w-full md:overflow-hidden">
+        <div
+          ref={trackRef}
+          className="grid grid-cols-1 gap-6 px-4 sm:px-6 md:flex md:w-max md:flex-nowrap md:gap-8 md:pl-[max(2rem,calc((100vw-56rem)/2))] md:pr-24 lg:px-8 md:lg:pl-[max(2rem,calc((100vw-56rem)/2))]"
+        >
           {MILESTONES.map(({ date, title, detail, tag, variant }) => (
             <div
               key={title}
-              className="flex flex-col gap-3 rounded-xl border border-border bg-surface p-6 transition-colors hover:border-white/15"
+              data-milestone
+              className="flex flex-col gap-3 rounded-xl border border-border bg-surface/90 p-6 backdrop-blur-sm transition-colors hover:border-white/15 md:w-[380px] md:shrink-0"
             >
               <div className="flex items-center justify-between gap-4">
                 <span className="font-mono text-xs text-muted-foreground">{date}</span>
@@ -72,7 +145,7 @@ const ShipScene = () => {
           ))}
         </div>
       </div>
-    </SceneSection>
+    </section>
   );
 };
 
