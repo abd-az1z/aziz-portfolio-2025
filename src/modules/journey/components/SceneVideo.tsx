@@ -56,8 +56,10 @@ const SceneVideo = ({ id }: SceneVideoProps) => {
     };
 
     (async () => {
-      if (prefersReducedMotion()) {
-        // Reduced motion: poster if it exists, else static glow.
+      // Mobile + reduced-motion are poster-first (Master_PRP §8): no
+      // multi-MB autoplay loops on phone data plans.
+      const mobile = !window.matchMedia("(pointer: fine) and (min-width: 768px)").matches;
+      if (prefersReducedMotion() || mobile) {
         if ((await probe(poster)) && !cancelled) setMode("poster");
         return;
       }
