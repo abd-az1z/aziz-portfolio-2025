@@ -17,7 +17,7 @@ import { prefersReducedMotion } from "../lib/scroll";
  * off-screen.
  */
 
-const COUNT = 56;
+const COUNT = 220;
 const GRAVITY = 0.25;
 const AIR = 0.995;
 const BOUNCE = 0.55;
@@ -25,15 +25,32 @@ const FLOOR_FRICTION = 0.92;
 const CURSOR_RADIUS = 90;
 const CURSOR_KICK = 2.4;
 
-// Journey palette: mostly quiet, a few tag-colored
+// Palette sampled from the six scene films: security's cyan streams and
+// red anomaly, the monolith's teal circuitry, RAG's violet point cloud,
+// the signal's emerald route, ship's deep-blue grid, now's amber core.
 const COLORS = [
-  "rgba(255,255,255,0.28)",
-  "rgba(255,255,255,0.18)",
-  "rgba(59,130,246,0.55)",
-  "rgba(34,211,238,0.5)",
-  "rgba(139,92,246,0.5)",
-  "rgba(16,185,129,0.5)",
-  "rgba(245,158,11,0.45)",
+  // security - cyan data streams (dominant hue of the film)
+  "rgba(34,211,238,0.55)",
+  "rgba(103,232,249,0.4)",
+  // security - the red anomaly (rare)
+  "rgba(239,68,68,0.6)",
+  // monolith - teal circuitry
+  "rgba(45,212,191,0.5)",
+  "rgba(20,184,166,0.4)",
+  // rag - violet point cloud
+  "rgba(139,92,246,0.55)",
+  "rgba(167,139,250,0.4)",
+  // signal - emerald route
+  "rgba(16,185,129,0.55)",
+  "rgba(52,211,153,0.4)",
+  // ship - deep blue grid
+  "rgba(59,130,246,0.5)",
+  "rgba(96,165,250,0.35)",
+  // now - amber core (rare, like the film)
+  "rgba(245,158,11,0.55)",
+  // quiet connective tissue
+  "rgba(255,255,255,0.2)",
+  "rgba(255,255,255,0.12)",
 ];
 
 interface Pebble {
@@ -84,10 +101,10 @@ const PebbleField = () => {
 
     // Seed: scattered along the floor with a little variance
     for (let i = 0; i < COUNT; i++) {
-      const r = 3 + Math.random() * 7;
+      const r = 2.5 + Math.random() * 5.5;
       pebbles.push({
         x: Math.random() * W,
-        y: H - r - Math.random() * 40,
+        y: H - r - Math.random() * 70,
         vx: 0,
         vy: 0,
         r,
