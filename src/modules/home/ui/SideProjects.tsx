@@ -1,6 +1,19 @@
-import { ArrowUpRight } from "lucide-react";
+"use client";
+
+import { useRef } from "react";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { LuGithub } from "react-icons/lu";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "@/modules/journey/lib/scroll";
+import MaskReveal from "@/modules/journey/components/MaskReveal";
 import { Tag, type TagVariant } from "@/components/ui/tag";
+
+/**
+ * Epilogue - side projects (Master_PRP §10.5, Phase 11).
+ * A proper chapter: kicker + MaskReveal heading, a large featured card
+ * for AI Triage System, the rest in a staggered grid, CTA to /projects.
+ */
 
 interface SideProject {
   tag: string;
@@ -12,23 +25,25 @@ interface SideProject {
   live?: string;
 }
 
+const FEATURED: SideProject = {
+  tag: "AGENTIC AI",
+  variant: "ai",
+  name: "AI Triage System",
+  description:
+    "AI agent that triages inbound return/refund emails into tickets, cites store policy, and safely auto-executes low-risk Stripe refunds - escalating edge cases to CSRs. Fail-safe by design: the agent only acts where the blast radius is small.",
+  stack: ["Next.js", "Inngest", "Stripe", "Neon", "Drizzle", "Clerk"],
+  github: "https://github.com/abd-az1z/ai-triage-system",
+  live: "https://ai-triage-system-ashen.vercel.app",
+};
+
 const PROJECTS: SideProject[] = [
-  {
-    tag: "AGENTIC AI",
-    variant: "ai",
-    name: "AI Triage System",
-    description:
-      "AI agent that triages inbound return/refund emails into tickets, cites store policy, and safely auto-executes low-risk Stripe refunds - escalating edge cases to CSRs.",
-    stack: ["Next.js", "Inngest", "Stripe", "Neon", "Drizzle", "Clerk"],
-    github: "https://github.com/abd-az1z/ai-triage-system",
-  },
   {
     tag: "AI TOOLING",
     variant: "ai",
     name: "PromptShrink",
     description:
       "Reduce token usage while preserving meaning. Compresses prompts intelligently to cut API costs without degrading output quality.",
-    stack: ["Next.js", "OpenAI", "Anthropic SDK", "TypeScript"],
+    stack: ["Next.js", "OpenAI", "Anthropic SDK"],
     github: "https://github.com/abd-az1z/promptshrink",
     live: "https://promptshrink.vercel.app",
   },
@@ -47,8 +62,8 @@ const PROJECTS: SideProject[] = [
     variant: "neutral",
     name: "SaaScribe AI",
     description:
-      "Transform PDFs into intelligent conversations - upload documents, embed them, and chat with your content using AI-powered understanding.",
-    stack: ["Next.js", "LangChain", "Pinecone", "Clerk", "Neon", "Stripe"],
+      "Transform PDFs into intelligent conversations - upload documents, embed them, and chat with your content.",
+    stack: ["Next.js", "LangChain", "Pinecone", "Neon"],
     github: "https://github.com/abd-az1z/SaaScribe.ai",
   },
   {
@@ -57,7 +72,7 @@ const PROJECTS: SideProject[] = [
     name: "CallSage",
     description:
       "AI-powered video conferencing with custom AI agents - real-time video, auth, async agent jobs, and database built end-to-end.",
-    stack: ["Next.js", "Stream", "OpenAI", "BetterAuth", "Inngest", "Neon", "Drizzle"],
+    stack: ["Next.js", "Stream", "OpenAI", "Inngest"],
     github: "https://github.com/abd-az1z/callsage.com",
     live: "https://callsage-com-8m9w.vercel.app",
   },
@@ -67,62 +82,145 @@ const PROJECTS: SideProject[] = [
     name: "AICortex",
     description:
       "Reduce LLM spend by 20–40% without degrading output quality - multi-provider model routing across Anthropic, OpenAI, and Mistral.",
-    stack: ["Next.js", "Anthropic SDK", "OpenAI", "Mistral", "Stripe"],
+    stack: ["Next.js", "Anthropic SDK", "Mistral"],
     github: "https://github.com/abd-az1z/aicortex",
     live: "https://aicortex.vercel.app",
   },
 ];
 
-const SideProjects = () => {
-  return (
-    <section className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-      <h2 className="mb-8 font-mono text-sm uppercase tracking-widest text-muted-foreground">
-        Side Projects
-      </h2>
+const CardLinks = ({ github, live }: { github: string; live?: string }) => (
+  <div className="flex items-center gap-4 border-t border-border pt-4">
+    <a
+      href={github}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+    >
+      <LuGithub className="h-4 w-4" />
+      GitHub
+    </a>
+    {live && (
+      <a
+        href={live}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ArrowUpRight className="h-4 w-4" />
+        Live
+      </a>
+    )}
+  </div>
+);
 
+const SideProjects = () => {
+  const root = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.from("[data-epilogue-card]", {
+          opacity: 0,
+          y: 30,
+          duration: 0.7,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: root.current,
+            start: "top 65%",
+            once: true,
+          },
+        });
+      });
+      return () => mm.revert();
+    },
+    { scope: root }
+  );
+
+  return (
+    <section
+      ref={root}
+      id="scene-projects"
+      className="mx-auto w-full max-w-7xl px-4 py-28 sm:px-6 lg:px-8"
+    >
+      <p className="mb-6 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
+        Epilogue · Off the clock
+      </p>
+      <MaskReveal className="mb-12">
+        <h2 className="max-w-2xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          What I build{" "}
+          <span className="text-muted-foreground">when nobody&apos;s asking.</span>
+        </h2>
+      </MaskReveal>
+
+      {/* Featured: AI Triage System */}
+      <div
+        data-epilogue-card
+        className="relative mb-6 overflow-hidden rounded-xl border border-border bg-surface p-8 transition-colors hover:border-white/15 md:p-10"
+      >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_85%_20%,rgba(139,92,246,0.08),transparent_60%)]"
+        />
+        <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl space-y-4">
+            <div className="flex items-center gap-3">
+              <Tag variant={FEATURED.variant}>{FEATURED.tag}</Tag>
+              <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                Featured
+              </span>
+            </div>
+            <h3 className="text-2xl font-semibold text-foreground md:text-3xl">
+              {FEATURED.name}
+            </h3>
+            <p className="text-base leading-relaxed text-muted-foreground">
+              {FEATURED.description}
+            </p>
+            <p className="font-mono text-xs text-muted-foreground">
+              {FEATURED.stack.join(" · ")}
+            </p>
+          </div>
+          <div className="shrink-0">
+            <CardLinks github={FEATURED.github} live={FEATURED.live} />
+          </div>
+        </div>
+      </div>
+
+      {/* The rest */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {PROJECTS.map(({ tag, variant, name, description, stack, github, live }) => (
           <div
             key={name}
+            data-epilogue-card
             className="flex flex-col gap-4 rounded-xl border border-border bg-surface p-6 transition-colors hover:border-white/15"
           >
             <div className="flex items-start justify-between gap-4">
               <h3 className="text-lg font-semibold text-foreground">{name}</h3>
               <Tag variant={variant}>{tag}</Tag>
             </div>
-
             <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
               {description}
             </p>
-
-            <p className="font-mono text-xs text-muted-foreground">
-              {stack.join(" · ")}
-            </p>
-
-            <div className="flex items-center gap-4 border-t border-border pt-4">
-              <a
-                href={github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <LuGithub className="h-4 w-4" />
-                GitHub
-              </a>
-              {live && (
-                <a
-                  href={live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  <ArrowUpRight className="h-4 w-4" />
-                  Live
-                </a>
-              )}
-            </div>
+            <p className="font-mono text-xs text-muted-foreground">{stack.join(" · ")}</p>
+            <CardLinks github={github} live={live} />
           </div>
         ))}
+
+        {/* CTA card to the full list */}
+        <Link
+          href="/projects"
+          data-epilogue-card
+          className="group flex min-h-[180px] flex-col items-start justify-between rounded-xl border border-dashed border-border p-6 transition-colors hover:border-white/25"
+        >
+          <p className="text-sm text-muted-foreground">
+            Filters, more builds, and everything in between.
+          </p>
+          <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground">
+            All projects
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </span>
+        </Link>
       </div>
     </section>
   );
