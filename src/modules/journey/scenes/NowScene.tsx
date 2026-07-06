@@ -8,7 +8,7 @@ import MaskReveal from "../components/MaskReveal";
 import { Tag } from "@/components/ui/tag";
 
 /**
- * Scene 7 — now. The arc lands in the present: heading masks in,
+ * Scene 7 - now. The arc lands in the present: heading masks in,
  * then the live status badge and the ask settle into place.
  */
 const NowScene = () => {
@@ -64,7 +64,7 @@ const NowScene = () => {
         <p data-now-body className="max-w-2xl text-base text-muted-foreground md:text-lg">
           From security fixes to architecture decisions in 8 months. The next
           chapter is a full-time role at an AI startup or mid-stage SaaS
-          company — backend, full-stack, or AI infrastructure.
+          company - backend, full-stack, or AI infrastructure.
         </p>
       </div>
     </SceneSection>

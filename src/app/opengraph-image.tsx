@@ -5,7 +5,7 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 /**
- * Generated OG card (Master_PRP §8) — branded, not a screenshot.
+ * Generated OG card (Master_PRP §8) - branded, not a screenshot.
  * Dark #0A0A0F, mono status badge, the one-line story.
  */
 export default function OgImage() {
@@ -73,7 +73,7 @@ export default function OgImage() {
             marginBottom: "48px",
           }}
         >
-          AI platform infrastructure — RAG pipelines, backend architecture,
+          AI platform infrastructure - RAG pipelines, backend architecture,
           and production SaaS that stays secure when it ships.
         </div>
 

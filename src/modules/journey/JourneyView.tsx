@@ -15,9 +15,10 @@ import StatsBar from "@/modules/home/ui/StatsBar";
 import SideProjects from "@/modules/home/ui/SideProjects";
 import ContactCTA from "@/modules/home/ui/ContactCTA";
 import { FadeIn } from "@/components/ui/fade-in";
+import CompanionNode from "./components/CompanionNode";
 
 /**
- * The Journey — cinematic scroll-driven homepage (Master_PRP v2).
+ * The Journey - cinematic scroll-driven homepage (Master_PRP v2).
  * Ten scenes, top to bottom: the 8-month Agentnomics arc as a documentary.
  */
 const JourneyView = () => {
@@ -25,11 +26,13 @@ const JourneyView = () => {
 
   return (
     <div className="relative w-full bg-background">
+      {/* The companion node - follows the scroll, morphs per chapter */}
+      <CompanionNode />
       <main className="relative z-0">
-        {/* 1 — the system (WebGL hero lands here in Phase 3) */}
+        {/* 1 - the system (WebGL hero lands here in Phase 3) */}
         <HeroScene />
 
-        {/* 2–7 — the arc */}
+        {/* 2–7 - the arc */}
         <SecurityScene />
         <MonolithScene />
         <RagScene />
@@ -37,18 +40,20 @@ const JourneyView = () => {
         <ShipScene />
         <NowScene />
 
-        {/* 8 — proof */}
+        {/* 8 - proof */}
         <StatsBar />
 
-        {/* 9 — side projects */}
+        {/* 9 - side projects */}
         <FadeIn>
           <SideProjects />
         </FadeIn>
 
-        {/* 10 — contact */}
-        <FadeIn delay={0.05}>
-          <ContactCTA />
-        </FadeIn>
+        {/* 10 - contact (id anchors the companion node's final waypoint) */}
+        <div id="scene-contact">
+          <FadeIn delay={0.05}>
+            <ContactCTA />
+          </FadeIn>
+        </div>
       </main>
     </div>
   );

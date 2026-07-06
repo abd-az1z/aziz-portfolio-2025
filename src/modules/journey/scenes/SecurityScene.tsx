@@ -8,11 +8,11 @@ import MaskReveal from "../components/MaskReveal";
 import { Tag } from "@/components/ui/tag";
 
 /**
- * Scene 2 — origin: security.
+ * Scene 2 - origin: security.
  * Findings stagger in like audit log entries; the tag snaps in first.
  */
 const FINDINGS = [
-  "Hardcoded API keys in deploy.sh — found in week one, fixed immediately",
+  "Hardcoded API keys in deploy.sh - found in week one, fixed immediately",
   "Auth bypass on Salesforce routes",
   "Plaintext credentials in a connections API GET response",
 ];

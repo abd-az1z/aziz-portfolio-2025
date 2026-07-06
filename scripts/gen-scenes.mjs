@@ -1,9 +1,9 @@
 /**
- * gen:scenes — Higgsfield scene pipeline (Master_PRP §6).
+ * gen:scenes - Higgsfield scene pipeline (Master_PRP §6).
  *
  * Per scene: soul text-to-image still → DoP image-to-video clip →
  * ffmpeg compress to webm+mp4 (<3MB target, muted loop) + webp poster.
- * Outputs land in /public/videos — SceneVideo picks them up with zero
+ * Outputs land in /public/videos - SceneVideo picks them up with zero
  * code changes.
  *
  * Talks to the live platform API directly (the @higgsfield/client SDK
@@ -140,7 +140,7 @@ for (const scene of scenes) {
         width_and_height: "2048x1152", // 16:9 (API enum)
         quality: "1080p",
         batch_size: 1,
-        enhance_prompt: false, // prompts are deliberate — don't rewrite them
+        enhance_prompt: false, // prompts are deliberate - don't rewrite them
       });
       manifest[scene.id] = stillUrl;
       saveManifest();
@@ -149,7 +149,7 @@ for (const scene of scenes) {
     }
 
     if (stillsOnly) {
-      console.log(`  [skip] stills-only mode — review poster, then run without --stills-only`);
+      console.log(`  [skip] stills-only mode - review poster, then run without --stills-only`);
       continue;
     }
 

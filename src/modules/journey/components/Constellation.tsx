@@ -5,7 +5,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
 /**
- * The living-system hero (Master_PRP §5) — the only WebGL on the site.
+ * The living-system hero (Master_PRP §5) - the only WebGL on the site.
  *
  * ~180 connected nodes drifting in dark space. The cursor repels nearby
  * nodes (spring back), scroll eases the camera inward. Perf budget:
@@ -13,7 +13,7 @@ import * as THREE from "three";
  * (frameloop handled by Canvas visibility), single draw call for points
  * + one for lines.
  *
- * Loaded only via next/dynamic({ ssr:false }) from HeroScene — never in
+ * Loaded only via next/dynamic({ ssr:false }) from HeroScene - never in
  * any other route's bundle. Mobile & reduced-motion never mount this.
  */
 
@@ -185,7 +185,7 @@ function Field() {
 }
 
 /**
- * Default export — mounted only through next/dynamic in HeroScene.
+ * Default export - mounted only through next/dynamic in HeroScene.
  */
 export default function Constellation() {
   return (

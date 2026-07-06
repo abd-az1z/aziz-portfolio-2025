@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 
-// Single registration point for GSAP plugins — import this module anywhere
+// Single registration point for GSAP plugins - import this module anywhere
 // scroll animation is needed and ScrollTrigger is guaranteed registered.
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);

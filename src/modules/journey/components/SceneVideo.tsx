@@ -11,19 +11,19 @@ import { prefersReducedMotion } from "../lib/scroll";
  * white-screen the page):
  *   1. video (desktop, motion OK)
  *   2. poster image (reduced-motion, or video failed but poster exists)
- *   3. animated CSS glow tinted per scene (no assets exist yet — Phase 6
+ *   3. animated CSS glow tinted per scene (no assets exist yet - Phase 6
  *      swaps in real Higgsfield clips with zero code changes)
  *
  * Every backdrop sits under a radial #0A0A0F vignette + ~3% film grain so
  * text stays readable and AI footage blends into the UI.
  */
 
-// Inline SVG feTurbulence noise — self-contained film grain, no asset.
+// Inline SVG feTurbulence noise - self-contained film grain, no asset.
 const GRAIN_URI =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 // Scene "energy" hues for the CSS-glow fallback (glow accent lives only
-// inside scenes, never on flat UI — Master_PRP §3).
+// inside scenes, never on flat UI - Master_PRP §3).
 const GLOW: Record<string, string> = {
   "scene-security": "rgba(239,68,68,0.07)",
   "scene-monolith": "rgba(59,130,246,0.08)",
@@ -34,7 +34,7 @@ const GLOW: Record<string, string> = {
 };
 
 interface SceneVideoProps {
-  /** Scene id, e.g. "scene-monolith" — maps to /videos/<id>.* */
+  /** Scene id, e.g. "scene-monolith" - maps to /videos/<id>.* */
   id: string;
 }
 
@@ -113,7 +113,7 @@ const SceneVideo = ({ id }: SceneVideoProps) => {
         />
       )}
 
-      {/* Vignette — blends every backdrop into #0A0A0F, guarantees contrast */}
+      {/* Vignette - blends every backdrop into #0A0A0F, guarantees contrast */}
       <div
         className="absolute inset-0"
         style={{
@@ -122,7 +122,7 @@ const SceneVideo = ({ id }: SceneVideoProps) => {
         }}
       />
 
-      {/* Film grain — unifies AI footage with the UI, hides compression */}
+      {/* Film grain - unifies AI footage with the UI, hides compression */}
       <div
         className="absolute inset-0 opacity-[0.03] mix-blend-overlay"
         style={{ backgroundImage: GRAIN_URI }}

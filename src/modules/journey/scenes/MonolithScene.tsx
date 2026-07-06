@@ -10,7 +10,7 @@ import MaskReveal from "../components/MaskReveal";
 import { Tag } from "@/components/ui/tag";
 
 /**
- * Scene 3 — the unlock: architecture. The showpiece scroll moment:
+ * Scene 3 - the unlock: architecture. The showpiece scroll moment:
  * the scene pins and the 6,200 → 109 countdown scrubs with scroll
  * while the supporting copy rises in.
  */
@@ -71,7 +71,7 @@ const MonolithScene = () => {
           </h2>
         </MaskReveal>
 
-        {/* Countdown metric — scrubbed 6,200 → 109 while the scene is pinned */}
+        {/* Countdown metric - scrubbed 6,200 → 109 while the scene is pinned */}
         <p className="font-mono text-5xl font-semibold text-foreground sm:text-6xl md:text-7xl">
           <span data-count>6,200</span>{" "}
           <span className="text-muted-foreground">lines</span>
@@ -81,7 +81,7 @@ const MonolithScene = () => {
           Activated 16 Flask blueprints, fixed relative imports across 11
           files, reduced the entry point to 109 lines. Zero logic changes,
           zero regressions. Every backend PR since is scoped to a single
-          blueprint — this was the unlock that made everything else possible.
+          blueprint - this was the unlock that made everything else possible.
         </p>
 
         <div data-monolith-footer className="flex flex-wrap items-center gap-6">

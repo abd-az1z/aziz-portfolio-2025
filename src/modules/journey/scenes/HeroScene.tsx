@@ -7,14 +7,14 @@ import { ArrowRight, ArrowDown } from "lucide-react";
 import { LuLinkedin } from "react-icons/lu";
 import { prefersReducedMotion } from "../lib/scroll";
 
-// The only WebGL on the site — client-only, code-split away from every
+// The only WebGL on the site - client-only, code-split away from every
 // other route. Mobile and reduced-motion never even download this chunk.
 const Constellation = dynamic(() => import("../components/Constellation"), {
   ssr: false,
 });
 
 /**
- * Scene 1 — the system.
+ * Scene 1 - the system.
  * Desktop + motion OK: living constellation (R3F), unmounted when the
  * hero scrolls out of view so it costs nothing below the fold.
  * Mobile / reduced-motion: static radial glow fallback.
@@ -55,7 +55,7 @@ const HeroScene = () => {
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center gap-8 text-center">
-        {/* Status badge — git-tag treatment (v1 rule) */}
+        {/* Status badge - git-tag treatment (v1 rule) */}
         <div className="flex items-center gap-2 rounded-md border border-tag-initiative/30 bg-tag-initiative/10 px-3 py-1.5">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-tag-initiative opacity-60" />
@@ -76,7 +76,7 @@ const HeroScene = () => {
 
         <p className="mx-auto max-w-2xl text-base text-muted-foreground md:text-lg">
           8 months at Agentnomics.ai. 50+ PRs merged to production. This is the
-          story of how that happened — scroll through it.
+          story of how that happened - scroll through it.
         </p>
 
         <div className="flex flex-col items-center gap-4 pt-2 sm:flex-row">

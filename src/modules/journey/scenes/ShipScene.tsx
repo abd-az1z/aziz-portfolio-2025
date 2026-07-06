@@ -8,9 +8,9 @@ import MaskReveal from "../components/MaskReveal";
 import { Tag, type TagVariant } from "@/components/ui/tag";
 
 /**
- * Scene 6 — scale & ship.
+ * Scene 6 - scale & ship.
  * Desktop: the section pins and the milestone strip scrolls horizontally,
- * scrubbed — a deploy pipeline moving left to right. Mobile and
+ * scrubbed - a deploy pipeline moving left to right. Mobile and
  * reduced-motion: vertical stack, no pin.
  */
 interface Milestone {
@@ -39,7 +39,7 @@ const MILESTONES: Milestone[] = [
   {
     date: "Jun 2026",
     title: "POS integrations ×5",
-    detail: "Toast, Clover, OpenTable, Resy, SevenRooms — credential masking, test-connection patterns.",
+    detail: "Toast, Clover, OpenTable, Resy, SevenRooms - credential masking, test-connection patterns.",
     tag: "INTEGRATION",
     variant: "neutral",
   },
@@ -118,12 +118,12 @@ const ShipScene = () => {
         <MaskReveal>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
             Then it was time to scale{" "}
-            <span className="text-muted-foreground">— and keep shipping.</span>
+            <span className="text-muted-foreground">- and keep shipping.</span>
           </h2>
         </MaskReveal>
       </div>
 
-      {/* Milestone strip — horizontal scrub on desktop, stack on mobile */}
+      {/* Milestone strip - horizontal scrub on desktop, stack on mobile */}
       <div className="relative z-10 w-full md:overflow-hidden">
         <div
           ref={trackRef}

@@ -12,8 +12,8 @@ interface MaskRevealProps {
 }
 
 /**
- * Motion language (Master_PRP §3): text enters via mask/clip reveal —
- * translateY + clip-path — not plain opacity. Instant under
+ * Motion language (Master_PRP §3): text enters via mask/clip reveal -
+ * translateY + clip-path - not plain opacity. Instant under
  * prefers-reduced-motion via gsap.matchMedia.
  */
 const MaskReveal = ({ children, delay = 0, className = "" }: MaskRevealProps) => {

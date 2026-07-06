@@ -10,9 +10,9 @@ import MaskReveal from "../components/MaskReveal";
 import { Tag } from "@/components/ui/tag";
 
 /**
- * Scene 5 — the call: vendor.
+ * Scene 5 - the call: vendor.
  * All six vendors appear as equals, then the field collapses: five dim
- * and drift back, SignalWire holds bright — the decision, animated.
+ * and drift back, SignalWire holds bright - the decision, animated.
  */
 const VENDORS = ["SignalWire", "Telnyx", "Plivo", "Vonage", "Bandwidth", "AWS Connect"];
 
@@ -39,7 +39,7 @@ const SignalScene = () => {
           stagger: 0.08,
           ease: "power2.out",
         })
-          // 2. The field collapses — losers dim, the winner holds
+          // 2. The field collapses - losers dim, the winner holds
           .to(
             "[data-vendor='candidate']",
             {
@@ -71,7 +71,7 @@ const SignalScene = () => {
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
             Twilio rejected A2P 10DLC registration. Twice.{" "}
             <span className="text-muted-foreground">
-              The voice product was completely blocked — so I found the way
+              The voice product was completely blocked - so I found the way
               around.
             </span>
           </h2>
@@ -98,7 +98,7 @@ const SignalScene = () => {
           Self-initiated a 6-vendor CPaaS evaluation across cost, compliance,
           and API compatibility. Recommended SignalWire as a drop-in
           Compatibility API replacement. The CEO funded the account within
-          hours — the evaluation cost ~3 hours; the alternative was weeks of
+          hours - the evaluation cost ~3 hours; the alternative was weeks of
           compliance limbo.
         </p>
 
