@@ -11,6 +11,8 @@ interface SceneSectionProps {
   kicker?: string;
   /** Render a SceneVideo backdrop for this scene id (defaults to `id`) */
   video?: boolean;
+  /** Disable the generic entry fade when the scene choreographs itself */
+  animate?: boolean;
   children: ReactNode;
   className?: string;
 }
@@ -19,11 +21,12 @@ interface SceneSectionProps {
  * Shared full-viewport scene shell. Content fades/rises in on scroll entry;
  * instant (no animation) under prefers-reduced-motion via gsap.matchMedia.
  */
-const SceneSection = ({ id, kicker, video = false, children, className = "" }: SceneSectionProps) => {
+const SceneSection = ({ id, kicker, video = false, animate = true, children, className = "" }: SceneSectionProps) => {
   const ref = useRef<HTMLElement>(null);
 
   useGSAP(
     () => {
+      if (!animate) return;
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         gsap.from("[data-scene-content]", {

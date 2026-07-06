@@ -1,49 +1,95 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "../lib/scroll";
 import SceneSection from "../components/SceneSection";
+import MaskReveal from "../components/MaskReveal";
 import { Tag } from "@/components/ui/tag";
 
 /**
  * Scene 4 — the leap: AI/RAG.
- * Phase 4 adds the `scene-rag` point-lattice clip + HUD-style stat reveals.
+ * The pipeline stages light up left-to-right like data flowing through.
  */
 const PIPELINE = ["PDF ingestion", "chunk embedding", "similarity search", "graceful fallback"];
 
 const RagScene = () => {
-  return (
-    <SceneSection id="scene-rag" video kicker="Feb 2026 · Chapter 3">
-      <div className="space-y-8">
-        <Tag variant="ai">AI/RAG</Tag>
-        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-          The restaurant bot couldn&apos;t answer from real menus.{" "}
-          <span className="text-muted-foreground">
-            So I built the RAG pipeline that let it — end to end, from scratch.
-          </span>
-        </h2>
+  const root = useRef<HTMLDivElement>(null);
 
-        {/* Pipeline flow — animates as connected stages in Phase 4 */}
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: root.current,
+            start: "top 70%",
+            once: true,
+          },
+        });
+
+        // Stages "power on" in sequence — data flowing through the pipe
+        tl.from("[data-rag-stage]", {
+          opacity: 0.15,
+          y: 10,
+          duration: 0.45,
+          stagger: 0.25,
+          ease: "power2.out",
+        })
+          .from(
+            "[data-rag-arrow]",
+            { opacity: 0, duration: 0.3, stagger: 0.25 },
+            0.35
+          )
+          .from("[data-rag-body]", { opacity: 0, y: 20, duration: 0.5 }, "-=0.2")
+          .from("[data-rag-footer]", { opacity: 0, y: 16, duration: 0.4 }, "-=0.2");
+      });
+      return () => mm.revert();
+    },
+    { scope: root }
+  );
+
+  return (
+    <SceneSection id="scene-rag" video animate={false} kicker="Feb 2026 · Chapter 3">
+      <div ref={root} className="space-y-8">
+        <Tag variant="ai">AI/RAG</Tag>
+        <MaskReveal>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+            The restaurant bot couldn&apos;t answer from real menus.{" "}
+            <span className="text-muted-foreground">
+              So I built the RAG pipeline that let it — end to end, from scratch.
+            </span>
+          </h2>
+        </MaskReveal>
+
+        {/* Pipeline flow — stages illuminate in order */}
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-sm text-foreground md:text-base">
           {PIPELINE.map((stage, i) => (
             <span key={stage} className="flex items-center gap-3">
-              <span className="rounded-md border border-tag-ai/30 bg-tag-ai/10 px-3 py-1.5 text-tag-ai">
+              <span
+                data-rag-stage
+                className="rounded-md border border-tag-ai/30 bg-tag-ai/10 px-3 py-1.5 text-tag-ai"
+              >
                 {stage}
               </span>
               {i < PIPELINE.length - 1 && (
-                <span className="text-muted-foreground">→</span>
+                <span data-rag-arrow className="text-muted-foreground">
+                  →
+                </span>
               )}
             </span>
           ))}
         </div>
 
-        <p className="max-w-2xl text-base text-muted-foreground md:text-lg">
+        <p data-rag-body className="max-w-2xl text-base text-muted-foreground md:text-lg">
           pgvector similarity search at chat time — 12 chunks, 0.25 threshold —
           with graceful fallback to raw text if pgvector is unavailable.
           Deployed and verified before a live client visit.
         </p>
 
-        <div className="flex flex-wrap items-center gap-6">
+        <div data-rag-footer className="flex flex-wrap items-center gap-6">
           <p className="font-mono text-sm text-muted-foreground">
             Python · Flask · pgvector · PostgreSQL · OpenAI
           </p>
