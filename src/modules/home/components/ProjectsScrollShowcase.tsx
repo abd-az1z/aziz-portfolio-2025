@@ -3,134 +3,9 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { MobileProjectsShowcase } from "./ProjectsScrollShowcase.mobile";
+import { PROJECTS, type Project } from "@/data/projects";
 
-export type Project = {
-  id: string;
-  title: string;
-  blurb: string;
-  tags?: string[];
-  points?: string[]; 
-  video?: string; 
-  link?: string;
-};
-
-const DEMO: Project[] = [
-  {
-    id: "callsage",
-    title: "CallSage",
-    blurb:
-      "AI-powered video conferencing platform where custom AI agents can join, assist, and provide meeting insights.",
-    points: [
-      "Built with Next.js, React, TypeScript, Tailwind",
-      "Stream for high-quality, real-time video calls",
-      "OpenAI for intelligent, context-aware meeting participation",
-      "Searchable transcripts & AI chat for instant context",
-      "Subscription plans & free trials with Polar",
-      "Secure auth with BetterAuth, background jobs via Inngest",
-      "Neon + Drizzle ORM for type-safe database operations",
-    ],
-    tags: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind",
-      "Stream",
-      "OpenAI",
-      "Neon",
-      "Drizzle ORM",
-      "BetterAuth",
-      "Inngest",
-    ],
-    link: "https://callsage-com-8m9w-git-41-dashboa-3b22f1-azizs-projects-9895145c.vercel.app/",
-    video: "/videos/CallSage.MP4",
-  },
-  {
-    id: "promptshrink",
-    title: "PromptShrink",
-    blurb:
-      "A lightweight, privacy-focused tool to compress and optimize your LLM prompts without losing meaning or functionality.",
-    points: [
-      "Built with Next.js 16, React 19, TypeScript, and TailwindCSS",
-      "Lossless compression preserving prompt meaning and structure",
-      "Privacy-first design with no data storage or logging",
-      "Real-time token count estimation and savings display",
-      "Lightning-fast optimization with minimal latency",
-      "Clean, intuitive UI for easy prompt compression",
-    ],
-    tags: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind",
-      "OpenAI",
-      "Vercel",
-    ],
-    link: "https://promptshrink.vercel.app/",
-  },
-  {
-    id: "saascribe",
-    title: "SaaScribe AI",
-    blurb:
-      "AI-powered SaaS documentation assistant that reduces document creation time by 50% with AI-guided templates.",
-    points: [
-      "Built with Next.js, React, TypeScript, Tailwind",
-      "Integrated OpenAI GPT for real-time, context-aware document generation",
-      "Dynamic routing, auth & session management with Clerk",
-      "Modular UI with ShadCN & Tailwind, responsive design",
-      "Deployed on Vercel with CI/CD",
-    ],
-    tags: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind",
-      "OpenAI GPT",
-      "Clerk",
-      "Vercel",
-    ],
-    link: "https://github.com/abd-az1z/SaaScribe.ai",
-    // video: "/videos/CallSage.MP4",
-  },
-  {
-    id: "solvebot",
-    title: "SolveBot",
-    blurb:
-      "AI-powered customer support chatbot reducing response time by 30% and supporting 100+ simultaneous chats.",
-    points: [
-      "GPT-3.5 for real-time persona-driven responses",
-      "Frontend with reusable ShadCN + Tailwind components",
-      "GraphQL (Apollo) + PostgreSQL (Hasura) backend",
-      "Role-based dashboards & session tracking",
-      "WCAG accessibility & cross-browser performance",
-    ],
-    tags: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind",
-      "GraphQL",
-      "PostgreSQL",
-      "Hasura",
-    ],
-    link: "https://github.com/abd-az1z/SolveBot",
-    video: "/videos/solvebot.MP4",
-  },
-  {
-    id: "portfolio",
-    title: "Personal Portfolio",
-    blurb:
-      "Modern developer portfolio highlighting AI & SaaS projects with bold visuals and motion.",
-    points: [
-      "Built with Vite + React, Tailwind, Framer Motion",
-      "Integrated blog & project sections",
-      "Deployed on Vercel with CI/CD",
-      "Dark theme with cosmic gradients and AA monogram branding",
-    ],
-    tags: ["React", "Vite", "Tailwind", "Framer Motion", "Vercel"],
-    link: "https://aziz-portfolio-chi.vercel.app/",
-    // video: "/videos/CallSage.MP4",
-  },
-];
+export type { Project };
 
 function useActiveProject(initial: string) {
   const [activeId, setActiveId] = useState<string>(initial);
@@ -284,7 +159,7 @@ function DetailPanel({ project }: { project: Project }) {
 }
 
 export default function ScrollSyncedShowcase({
-  projects = DEMO,
+  projects = PROJECTS,
 }: {
   projects?: Project[];
 }) {
@@ -339,7 +214,7 @@ export default function ScrollSyncedShowcase({
                   p.id === activeId ? "text-white" : "text-white/50"
                 }`}
               >
-                {String(i + 1).padStart(2, "0")} — {p.title}
+                {String(i + 1).padStart(2, "0")} - {p.title}
               </a>
             ))}
           </nav>
@@ -350,15 +225,15 @@ export default function ScrollSyncedShowcase({
 }
 
 export function ShowcasePlayground() {
-  const A = <ScrollSyncedShowcase projects={DEMO} />;
-  const minimal: Project[] = [DEMO[0]];
+  const A = <ScrollSyncedShowcase projects={PROJECTS} />;
+  const minimal: Project[] = [PROJECTS[0]];
   const B = <ScrollSyncedShowcase projects={minimal} />;
   const many: Project[] = [
-    ...DEMO,
-    { ...DEMO[0], id: "a1" },
-    { ...DEMO[1], id: "a2" },
-    { ...DEMO[2], id: "a3" },
-    { ...DEMO[3], id: "a4" },
+    ...PROJECTS,
+    { ...PROJECTS[0], id: "a1" },
+    { ...PROJECTS[1], id: "a2" },
+    { ...PROJECTS[2], id: "a3" },
+    { ...PROJECTS[3], id: "a4" },
   ];
   const C = <ScrollSyncedShowcase projects={many} />;
 

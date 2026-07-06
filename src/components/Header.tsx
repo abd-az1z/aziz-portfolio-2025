@@ -1,7 +1,8 @@
 "use client";
 
-import { CommandIcon, Menu } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import NavbarItems from "../modules/home/components/NavbarItems";
 import Image from "next/image";
@@ -9,71 +10,63 @@ import Link from "next/link";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isHeroInView, setIsHeroInView] = useState(true);
-  const headerRef = useRef<HTMLElement>(null);
-  const heroSectionRef = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsHeroInView(entry.isIntersecting);
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '-100px 0px 0px 0px'
-      }
-    );
-
-    const heroSection = document.querySelector('#hero-section');
-    if (heroSection) {
-      observer.observe(heroSection);
-    }
-
-    return () => {
-      if (heroSection) {
-        observer.unobserve(heroSection);
-      }
-    };
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header
-      ref={headerRef}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/95 backdrop-blur-xs",
-        !isHeroInView && "py-2 "
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/95 backdrop-blur-sm",
+        scrolled ? "border-b border-border" : ""
       )}
     >
-      <div className={cn(
-        "mx-auto px-8 transition-all duration-300",
-        isHeroInView ? "py-4 md:p-8 md:px-10" : "py-2 md:px-6"
-      )}>
+      <div className="mx-auto px-6 md:px-10">
         <div className={cn(
-          "flex items-center justify-between transition-all duration-300",
-          isHeroInView ? "h-14" : "h-10"
+          "relative flex items-center justify-between transition-all duration-300",
+          scrolled ? "h-12" : "h-16"
         )}>
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <Link href="/" className="w-8 h-8 rounded-full flex items-center justify-center text-white font-medium">
-              <Image src={"/images/logo.png"} alt="Logo" width={30} height={30} priority />
-            </Link>
+          <Link href="/" className="flex items-center justify-center">
+            <Image src="/images/logo.png" alt="Logo" width={28} height={28} priority />
+          </Link>
+
+          {/* Nav links - absolutely centered */}
+          <div className="absolute left-1/2 -translate-x-1/2 hidden md:block">
+            <NavbarItems />
           </div>
 
-          {/* Navbar items */}
-          <NavbarItems />
+          {/* Get in Touch - right */}
+          <a
+            href="mailto:mohdabdulaziz2023@gmail.com"
+            className="hidden md:inline-block px-4 py-1.5 text-sm font-medium rounded-full border border-white/10 hover:border-white/25 transition-colors"
+          >
+            Get in Touch
+          </a>
 
-          {/* Mobile menu button */}
+          {/* Mobile hamburger */}
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 -mr-2 rounded-md hover:bg-accent/10 transition-colors"
-            aria-expanded="false"
+            type="button"
+            onClick={() => setIsMenuOpen((o) => !o)}
+            className="md:hidden p-2 -mr-2 rounded-md hover:bg-white/5 transition-colors"
+            aria-expanded={isMenuOpen ? "true" : "false"}
+            aria-label="Toggle menu"
           >
             {isMenuOpen ? (
-              <Menu className="h-6 w-6 text-white" />
+              <X className="h-5 w-5 text-white" />
             ) : (
-              <CommandIcon className="h-6 w-6 text-white" />
+              <Menu className="h-5 w-5 text-white" />
             )}
-            <span className="sr-only">Toggle menu</span>
           </button>
         </div>
       </div>
@@ -81,15 +74,16 @@ const Header = () => {
       {/* Mobile menu */}
       <div
         className={cn(
-          "md:hidden transition-all duration-200 ease-in-out overflow-hidden bg-background/95 backdrop-blur-sm",
-          isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          "md:hidden overflow-hidden transition-all duration-200 ease-in-out bg-background/98 border-b border-border",
+          isMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
         )}
       >
-        <div className="px-4 py-2 space-y-1">
+        <div className="px-6 py-3">
           <NavbarItems isMobile />
         </div>
       </div>
     </header>
   );
 };
+
 export default Header;

@@ -1,16 +1,11 @@
-import CuratedWork from "./ui/CuratedWork"
-import ConceptCreation from "./ui/ConceptCreation"
+import WorkPage from "./ui/WorkPage";
 
 const WorkView = () => {
   return (
-       <>
-        <div className="relative md:pt-[10vh] w-full bg-background">
-          <main className="relative">
-              <CuratedWork />
-              <ConceptCreation /> 
-          </main>
-        </div>
-       </>
-  )
-}
-export default WorkView
+    <div className="relative w-full bg-background md:mt-16 mt-8">
+      <WorkPage />
+    </div>
+  );
+};
+
+export default WorkView;
