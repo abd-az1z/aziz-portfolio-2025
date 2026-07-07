@@ -120,5 +120,6 @@ export const PROJECTS: Project[] = [
     ],
     tags: ["Next.js", "GraphQL", "Apollo", "OpenAI", "PostgreSQL", "Hasura", "Clerk"],
     github: "https://github.com/abd-az1z/SolveBot",
+    link: "https://solve-bot-6jv3.vercel.app/login",
   },
 ];
