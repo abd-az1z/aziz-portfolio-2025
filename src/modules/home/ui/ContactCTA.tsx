@@ -5,14 +5,15 @@ import { SOCIALS } from "@/components/Footer";
 
 const ContactCTA = () => {
   return (
-    <section className="relative mx-auto flex min-h-[80vh] w-full max-w-7xl flex-col justify-center px-4 py-24 sm:px-6 lg:px-8">
-      {/* Pebble finale - the system comes to rest, but still reacts to you */}
+    <section className="relative flex min-h-[80vh] w-full flex-col justify-center py-16">
+      {/* Pebble finale - full viewport width, the system comes to rest
+          but still reacts to you */}
       <PebbleField />
 
-      <p className="relative z-10 mb-10 text-center font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
-        The next chapter
-      </p>
-      <div className="relative z-10">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <p className="mb-10 text-center font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          The next chapter
+        </p>
         <div className="mx-auto max-w-2xl space-y-8 text-center">
           {/* Status */}
           <div className="inline-flex items-center gap-2 rounded-md border border-tag-initiative/30 bg-tag-initiative/10 px-3 py-1.5">
@@ -39,7 +40,7 @@ const ContactCTA = () => {
           </div>
 
           {/* CTA */}
-          <div className="flex items-center justify-center gap-6 border-t border-border pt-8">
+          <div className="flex items-center justify-center gap-6">
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <a
                 href="mailto:mohdabdulaziz2023@gmail.com"

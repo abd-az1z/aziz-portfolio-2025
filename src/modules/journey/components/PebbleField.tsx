@@ -17,6 +17,8 @@ import { prefersReducedMotion } from "../lib/scroll";
  * off-screen.
  */
 
+// Base count; actual count scales with viewport width so big screens
+// stay as dense as laptops (see seeding below).
 const COUNT = 220;
 const GRAVITY = 0.25;
 const AIR = 0.995;
@@ -99,9 +101,12 @@ const PebbleField = () => {
     };
     resize();
 
-    // Seed: scattered along the floor with a little variance
-    for (let i = 0; i < COUNT; i++) {
-      const r = 2.5 + Math.random() * 5.5;
+    // Seed: scattered along the floor with a little variance.
+    // Density-scaled: ~one pebble per 6px of width, clamped so laptops
+    // and ultrawides both feel full without overloading the sim.
+    const count = Math.max(COUNT, Math.min(Math.round(W / 6), 380));
+    for (let i = 0; i < count; i++) {
+      const r = 4 + Math.random() * 8;
       pebbles.push({
         x: Math.random() * W,
         y: H - r - Math.random() * 70,
