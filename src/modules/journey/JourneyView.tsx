@@ -39,12 +39,10 @@ const JourneyView = () => {
         <ShipScene />
         <NowScene />
 
-        {/* 8 - side projects (stats live inside the scenes themselves) */}
-        <FadeIn>
-          <SideProjects />
-        </FadeIn>
+        {/* 8 - epilogue: side projects (self-choreographed) */}
+        <SideProjects />
 
-        {/* 10 - contact (id anchors the companion node's final waypoint) */}
+        {/* 9 - contact (id anchors the companion node's final waypoint) */}
         <div id="scene-contact">
           <FadeIn delay={0.05}>
             <ContactCTA />

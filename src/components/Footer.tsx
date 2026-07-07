@@ -1,7 +1,10 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { LuLinkedin, LuGithub } from "react-icons/lu";
 import { RiTwitterXLine } from "react-icons/ri";
 
-const SOCIALS = [
+export const SOCIALS = [
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/abdul-aziz-mohammed-87296b179",
@@ -20,7 +23,11 @@ const SOCIALS = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
+
+  // The homepage journey carries its own finale footer inside ContactCTA
+  if (pathname === "/") return null;
 
   return (
     <footer className="relative z-10 border-t border-border bg-background px-4 py-6 sm:px-6 lg:px-8">

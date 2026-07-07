@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dumbbell,
   Mountain,
@@ -12,6 +14,7 @@ import {
   Check,
   type LucideIcon,
 } from "lucide-react";
+import MaskReveal from "@/modules/journey/components/MaskReveal";
 
 const INTERESTS: { icon: LucideIcon; label: string }[] = [
   { icon: Dumbbell, label: "Workouts & Health" },
@@ -47,12 +50,14 @@ const AboutPage = () => {
     <div className="mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="mb-16 max-w-2xl space-y-4">
-        <p className="font-mono text-sm uppercase tracking-widest text-muted-foreground">
-          About
+        <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          About · The person behind the PRs
         </p>
-        <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-          Beyond the code
-        </h1>
+        <MaskReveal>
+          <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+            Beyond the code
+          </h1>
+        </MaskReveal>
         <p className="text-base text-muted-foreground md:text-lg">
           I&apos;m Abdul Aziz - a software engineer based in Seattle, WA. I
           joined Agentnomics.ai in November 2025 and have been shipping
@@ -62,8 +67,8 @@ const AboutPage = () => {
       </div>
 
       {/* How I learn */}
-      <div className="mb-16 rounded-xl border border-border bg-surface p-6 md:p-8">
-        <p className="font-mono text-sm uppercase tracking-widest text-muted-foreground mb-4">
+      <div className="mb-16 border-l-2 border-tag-ai/60 pl-6 md:pl-8">
+        <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">
           How I learn
         </p>
         <p className="text-base text-foreground leading-relaxed max-w-2xl">
@@ -76,7 +81,7 @@ const AboutPage = () => {
 
       {/* Interests */}
       <div className="mb-16">
-        <p className="font-mono text-sm uppercase tracking-widest text-muted-foreground mb-6">
+        <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground mb-6">
           Outside the terminal
         </p>
         <div className="flex flex-wrap gap-3">
@@ -99,7 +104,7 @@ const AboutPage = () => {
 
       {/* Bucket list */}
       <div className="mb-16">
-        <p className="font-mono text-sm uppercase tracking-widest text-muted-foreground mb-6">
+        <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground mb-6">
           Bucket list
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
@@ -135,9 +140,9 @@ const AboutPage = () => {
       </div>
 
       {/* Education + Currently looking for */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <div className="rounded-xl border border-border bg-surface p-6 space-y-4">
-          <h2 className="font-mono text-sm uppercase tracking-widest text-muted-foreground">
+      <div className="grid grid-cols-1 gap-10 border-t border-border pt-10 md:grid-cols-2">
+        <div className="space-y-4">
+          <h2 className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
             Education
           </h2>
           <div>
@@ -174,8 +179,8 @@ const AboutPage = () => {
           </div>
         </div>
 
-        <div className="rounded-xl border border-border bg-surface p-6 space-y-3">
-          <h2 className="font-mono text-sm uppercase tracking-widest text-muted-foreground">
+        <div className="space-y-3">
+          <h2 className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
             Currently looking for
           </h2>
           <p className="text-sm text-muted-foreground">

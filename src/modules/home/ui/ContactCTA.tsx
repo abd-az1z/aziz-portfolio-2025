@@ -1,14 +1,19 @@
 import { ArrowRight } from "lucide-react";
-import { LuLinkedin, LuGithub } from "react-icons/lu";
-import { RiTwitterXLine } from "react-icons/ri";
+import { LuLinkedin } from "react-icons/lu";
+import PebbleField from "@/modules/journey/components/PebbleField";
+import { SOCIALS } from "@/components/Footer";
 
 const ContactCTA = () => {
   return (
-    <section className="relative mx-auto flex min-h-[80vh] w-full max-w-7xl flex-col justify-center px-4 py-24 sm:px-6 lg:px-8">
-      <p className="mb-10 text-center font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
-        The next chapter
-      </p>
-      <div>
+    <section className="relative flex min-h-[80vh] w-full flex-col justify-center py-16">
+      {/* Pebble finale - full viewport width, the system comes to rest
+          but still reacts to you */}
+      <PebbleField />
+
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <p className="mb-10 text-center font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          The next chapter
+        </p>
         <div className="mx-auto max-w-2xl space-y-8 text-center">
           {/* Status */}
           <div className="inline-flex items-center gap-2 rounded-md border border-tag-initiative/30 bg-tag-initiative/10 px-3 py-1.5">
@@ -35,7 +40,7 @@ const ContactCTA = () => {
           </div>
 
           {/* CTA */}
-          <div className="flex items-center justify-center gap-6 border-t border-border pt-8">
+          <div className="flex items-center justify-center gap-6">
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <a
                 href="mailto:mohdabdulaziz2023@gmail.com"
@@ -54,6 +59,30 @@ const ContactCTA = () => {
                 LinkedIn
               </a>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Finale footer - the regular footer's contents live here on the
+          homepage, resting on the pebble floor */}
+      <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-6 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
+          <p className="font-mono text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Abdul Aziz Mohammed
+          </p>
+          <div className="flex gap-2">
+            {SOCIALS.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
           </div>
         </div>
       </div>

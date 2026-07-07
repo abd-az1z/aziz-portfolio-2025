@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import NavbarItems from "../modules/home/components/NavbarItems";
+import { ChapterLabel, ScrollProgress } from "./ChapterTracker";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -36,10 +37,13 @@ const Header = () => {
           "relative flex items-center justify-between transition-all duration-300",
           scrolled ? "h-12" : "h-16"
         )}>
-          {/* Logo */}
-          <Link href="/" className="flex items-center justify-center">
-            <Image src="/images/logo.png" alt="Logo" width={28} height={28} priority />
-          </Link>
+          {/* Logo + current chapter (homepage only) */}
+          <div className="flex items-center gap-4">
+            <Link href="/" className="flex items-center justify-center">
+              <Image src="/images/logo.png" alt="Logo" width={28} height={28} priority />
+            </Link>
+            <ChapterLabel />
+          </div>
 
           {/* Nav links - absolutely centered */}
           <div className="absolute left-1/2 -translate-x-1/2 hidden md:block">
@@ -59,7 +63,7 @@ const Header = () => {
             type="button"
             onClick={() => setIsMenuOpen((o) => !o)}
             className="md:hidden p-2 -mr-2 rounded-md hover:bg-white/5 transition-colors"
-            aria-expanded={isMenuOpen ? "true" : "false"}
+            aria-expanded={isMenuOpen}
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
@@ -82,6 +86,9 @@ const Header = () => {
           <NavbarItems isMobile />
         </div>
       </div>
+
+      {/* Journey scroll progress (homepage only) */}
+      <ScrollProgress />
     </header>
   );
 };
